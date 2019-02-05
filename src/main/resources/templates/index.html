@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragments :: common-head"></head>
+<body>
+    <div th:replace="fragments/fragments :: common-header"/>
+    <main role="main">
+        <div class="container" style="margin-top: 20px;">
+            <div th:replace="fragments/fragments :: common-messages"/>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div th:replace="fragments/fragments :: common-jumbotron"/>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="card text-center shadow col-md-5" style="margin: 20px;">
+                    <div class="landing-icon text-center" style="margin-top:10px;">
+                        <i class="far fa-bookmark fa-4x" style="margin-top:10px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">URL</h4>
+                        <p class="card-text">Generate a QR Code with an URL.</p>
+                        <a href="/qr-code-url" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="top"
+                           title="Generate">Generate &raquo;</a>
+                    </div>
+                </div>
+                <div class="card text-center shadow col-md-5" style="margin: 20px;">
+                    <div class="landing-icon text-center" style="margin-top:10px;">
+                        <i class="fas fa-at fa-4x" style="margin-top:10px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">EMail</h4>
+                        <p class="card-text">Generate a QR Code with an EMail Address.</p>
+                        <a href="/qr-code-email" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="top"
+                           title="Generate">Generate &raquo;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="card text-center shadow col-md-5" style="margin: 20px;">
+                    <div class="landing-icon text-center" style="margin-top: 10px;">
+                        <i class="fas fa-phone fa-4x" style="margin-top:10px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Phone</h4>
+                        <p class="card-text">Generate a QR Code with a Phone Number.</p>
+                        <a href="/qr-code-phone" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="top"
+                           title="Generate">Generate &raquo;</a>
+                    </div>
+                </div>
+                <div class="card text-center shadow col-md-5" style="margin: 20px;">
+                    <div class="landing-icon text-center" style="margin-top:10px;">
+                        <i class="fas fa-address-card fa-4x" style="margin-top:10px;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Adress Card</h4>
+                        <p class="card-text">Generate a QR Code with an Address Card.</p>
+                        <a href="/qr-code-vcard" class="btn btn-primary" role="button" data-toggle="tooltip" data-placement="top"
+                           title="Generate">Generate &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
