@@ -11,7 +11,7 @@ Build & run
 
 **Prerequisites:**
 
-* Java 8
+* Java 11
 * Apache Maven (https://maven.apache.org/)
 
 Application properties can be configured in
