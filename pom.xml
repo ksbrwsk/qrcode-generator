@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
+        <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.ksbrwsk</groupId>
@@ -16,9 +16,9 @@
     <description>Demo project for Spring Boot with ZXing.</description>
 
     <properties>
-        <java.version>14</java.version>
-        <webjars-locator.version>0.39</webjars-locator.version>
-        <bootstrap.version>4.4.1</bootstrap.version>
+        <java.version>11</java.version>
+        <webjars-locator.version>0.40</webjars-locator.version>
+        <bootstrap.version>4.5.0</bootstrap.version>
         <font-awesome.version>5.13.0</font-awesome.version>
         <httpClient.version>4.5.12</httpClient.version>
         <zxing.version>3.4.0</zxing.version>
@@ -38,8 +38,12 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -97,6 +101,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -112,7 +122,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
         </plugins>
     </build>
 </project>
