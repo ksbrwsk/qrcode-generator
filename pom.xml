@@ -10,7 +10,7 @@
     </parent>
     <groupId>de.ksbrwsk</groupId>
     <artifactId>qrcode-generator</artifactId>
-    <version>1.0.2-RELEASE</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>qrcode-generator</name>
     <description>Demo project for Spring Boot with ZXing.</description>
@@ -18,13 +18,13 @@
     <properties>
         <java.version>14</java.version>
         <webjars-locator.version>0.40</webjars-locator.version>
-        <bootstrap.version>4.5.0</bootstrap.version>
+        <bootstrap.version>4.5.2</bootstrap.version>
         <font-awesome.version>5.13.0</font-awesome.version>
         <httpClient.version>4.5.12</httpClient.version>
         <zxing.version>3.4.0</zxing.version>
-        <commons-io.version>2.6</commons-io.version>
-        <commons-lang3.version>3.10</commons-lang3.version>
-        <jetbrains-annotations.version>19.0.0</jetbrains-annotations.version>
+        <commons-io.version>2.8.0</commons-io.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+        <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
     </properties>
 
     <dependencies>
@@ -124,4 +124,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/ksbrwsk/qrcode-generator</url>
+        </repository>
+    </distributionManagement>
 </project>
