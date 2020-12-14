@@ -1,22 +1,20 @@
 package de.ksbrwsk.qrcode.web;
 
-import de.ksbrwsk.qrcode.model.QrCodeUrl;
-import de.ksbrwsk.qrcode.model.QrCodeVCard;
 import de.ksbrwsk.qrcode.model.QrCodeEmail;
 import de.ksbrwsk.qrcode.model.QrCodePhone;
+import de.ksbrwsk.qrcode.model.QrCodeUrl;
+import de.ksbrwsk.qrcode.model.QrCodeVCard;
 import de.ksbrwsk.qrcode.utils.TestUtils;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.support.BindingAwareModelMap;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class QrCodeControllerTests {
 
     @Autowired

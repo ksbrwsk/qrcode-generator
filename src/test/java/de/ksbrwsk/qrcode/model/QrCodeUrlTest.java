@@ -1,14 +1,13 @@
 package de.ksbrwsk.qrcode.model;
 
 import de.ksbrwsk.qrcode.utils.TestUtils;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.Test;
 import org.springframework.validation.BindingResult;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(SpringRunner.class)
+
 public class QrCodeUrlTest {
 
     @Test

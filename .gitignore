@@ -1,6 +1,7 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 manifest.yml
+.DS_Store
 ### STS ###
 .apt_generated
 .classpath
