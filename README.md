@@ -11,13 +11,13 @@ Build & run
 
 **Prerequisites:**
 
-* Java 14
+* Java 15
 * Apache Maven (https://maven.apache.org/)
 
 Application properties can be configured in
 
 ```bash
-qr-code-generator/src/main/resources
+qrcode-generator/src/main/resources
 ```
 
 Use

@@ -12,7 +12,7 @@ public class QrCodeEmailTest {
 
    @Test
     public void thatQrCodeMailIsValid() {
-        QrCodeEmail qrCodeEmail = new QrCodeEmail("http://www.google.com");
+        QrCodeEmail qrCodeEmail = new QrCodeEmail("email@email.com");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodeEmail);
         assertFalse(bindingResult.hasErrors());
     }
@@ -20,7 +20,7 @@ public class QrCodeEmailTest {
     @Test
     public void thatQrCodeMailIsValidSetter() {
         QrCodeEmail qrCodeEmail = new QrCodeEmail();
-        qrCodeEmail.setEmailToBeEncoded("http://www.google.com");
+        qrCodeEmail.setEmailToBeEncoded("email@email.com");
         qrCodeEmail.setSubjectToBeEncoded("My Subject");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodeEmail);
         assertFalse(bindingResult.hasErrors());
