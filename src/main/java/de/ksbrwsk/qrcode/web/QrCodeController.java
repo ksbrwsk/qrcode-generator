@@ -55,7 +55,6 @@ public class QrCodeController {
                              @Valid @ModelAttribute("qrCodeUrl") QrCodeUrl qrCodeUrl,
                              BindingResult bindingResult) {
         addCommonModelAttributes(model);
-        model.addAttribute("qrCodeUrl", qrCodeUrl);
         if (!bindingResult.hasErrors()) {
             log.info("generate QR Code for Url {}", qrCodeUrl.getUrlToBeEncoded());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeUrl(qrCodeUrl);
@@ -77,7 +76,6 @@ public class QrCodeController {
                                @Valid @ModelAttribute("qrCodePhone") QrCodePhone qrCodePhone,
                                BindingResult bindingResult) {
         addCommonModelAttributes(model);
-        model.addAttribute("qrCodePhone", qrCodePhone);
         if (!bindingResult.hasErrors()) {
             log.info("generate QR Code for Phone number {}", qrCodePhone.getPhoneToBeEncoded());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodePhone(qrCodePhone);
@@ -99,7 +97,6 @@ public class QrCodeController {
                                @Valid @ModelAttribute("qrCodeEmail") QrCodeEmail qrCodeEmail,
                                BindingResult bindingResult) {
         addCommonModelAttributes(model);
-        model.addAttribute("qrCodeEmail", qrCodeEmail);
         if (!bindingResult.hasErrors()) {
             log.info("generate QR Code for Email {}", qrCodeEmail.getEmailToBeEncoded());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeEmail(qrCodeEmail);
@@ -121,7 +118,6 @@ public class QrCodeController {
                                @Valid @ModelAttribute("qrCodeVCard") QrCodeVCard qrCodeVCard,
                                BindingResult bindingResult) {
         addCommonModelAttributes(model);
-        model.addAttribute("qrCodeVCard", qrCodeVCard);
         if (!bindingResult.hasErrors()) {
             log.info("generate QR Code for VCard {}", qrCodeVCard.getName());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeVCard(qrCodeVCard);

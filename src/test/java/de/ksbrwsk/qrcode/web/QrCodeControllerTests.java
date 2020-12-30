@@ -45,7 +45,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processUrl(model, qrCodeUrl, bindingResult);
         assertEquals(expected, actual);
         assertNotNull(model.get("image"));
-        assertNotNull(model.get("qrCodeUrl"));
+        assertNull(model.get("qrCodeUrl"));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processUrl(model, qrCodeUrl, bindingResult);
         assertEquals(expected, actual);
         assertNull(model.get("image"));
-        assertNotNull(model.get("qrCodeUrl"));
+        assertNull(model.get("qrCodeUrl"));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processPhone(model, qrCodePhone, bindingResult);
         assertEquals(expected, actual);
         assertNotNull(model.get("image"));
-        assertNotNull(model.get("qrCodePhone"));
+        assertNull(model.get("qrCodePhone"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processPhone(model, qrCodePhone, bindingResult);
         assertEquals(expected, actual);
         assertNull(model.get("image"));
-        assertNotNull(model.get("qrCodePhone"));
+        assertNull(model.get("qrCodePhone"));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processEmail(model, qrCodeEmail, bindingResult);
         assertEquals(expected, actual);
         assertNotNull(model.get("image"));
-        assertNotNull(model.get("qrCodeEmail"));
+        assertNull(model.get("qrCodeEmail"));
     }
 
     @Test
@@ -114,7 +114,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processEmail(model, qrCodeEmail, bindingResult);
         assertEquals(expected, actual);
         assertNull(model.get("image"));
-        assertNotNull(model.get("qrCodeEmail"));
+        assertNull(model.get("qrCodeEmail"));
     }
 
     @Test
@@ -137,7 +137,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processVCard(model, qrCodeVCard, bindingResult);
         assertEquals(expected, actual);
         assertNotNull(model.get("image"));
-        assertNotNull(model.get("qrCodeVCard"));
+        assertNull(model.get("qrCodeVCard"));
     }
 
     @Test
@@ -151,7 +151,7 @@ public class QrCodeControllerTests {
         String actual = this.qrCodeController.processVCard(model, qrCodeVCard, bindingResult);
         assertEquals(expected, actual);
         assertNull(model.get("image"));
-        assertNotNull(model.get("qrCodeVCard"));
+        assertNull(model.get("qrCodeVCard"));
     }
 
     @Test
