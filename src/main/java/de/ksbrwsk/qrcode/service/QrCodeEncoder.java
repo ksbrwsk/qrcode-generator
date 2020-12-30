@@ -10,6 +10,7 @@ import de.ksbrwsk.qrcode.model.*;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.io.FileUtils;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 
@@ -26,6 +27,31 @@ import java.util.UUID;
 @Slf4j
 public class QrCodeEncoder {
 
+    public QrCodeProcessingResult generateQrCodeUrl(QrCodeUrl qrCodeUrl) {
+        String extracted = new QrCodeUrlParser(qrCodeUrl).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
+    public QrCodeProcessingResult generateQrCodeEmail(QrCodeEmail qrCodeEmail) {
+        String extracted = new QrCodeEmailParser(qrCodeEmail).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
+    public QrCodeProcessingResult generateQrCodeSms(QrCodeSms qrCodeSms) {
+        String extracted = new QrCodeSmsParser(qrCodeSms).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
+    public QrCodeProcessingResult generateQrCodePhone(QrCodePhone qrCodePhone) {
+        String extracted = new QrCodePhoneParser(qrCodePhone).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
+    public QrCodeProcessingResult generateQrCodeVCard(QrCodeVCard qrCodeVCard) {
+        String extracted = new QrCodeVCardParser(qrCodeVCard).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
     private QrCodeProcessingResult generateImageAsBase64(String textToBeEncoded) {
         QrCodeProcessingResult result = new QrCodeProcessingResult();
         result.setEncodedText(textToBeEncoded);
@@ -33,10 +59,7 @@ public class QrCodeEncoder {
         int size = 250;
         String fileType = "png";
         try {
-            Map<EncodeHintType, Object> hintMap = new EnumMap<>(EncodeHintType.class);
-            hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-            hintMap.put(EncodeHintType.MARGIN, 1);
-            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            Map<EncodeHintType, Object> hintMap = createHintMap();
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(textToBeEncoded, BarcodeFormat.QR_CODE, size, size, hintMap);
             int width = bitMatrix.getWidth();
@@ -71,23 +94,13 @@ public class QrCodeEncoder {
         return result;
     }
 
-    public QrCodeProcessingResult generateQrCodeUrl(QrCodeUrl qrCodeUrl) {
-        String extracted = new QrCodeUrlParser(qrCodeUrl).parse();
-        return this.generateImageAsBase64(extracted);
+    @NotNull
+    private Map<EncodeHintType, Object> createHintMap() {
+        Map<EncodeHintType, Object> hintMap = new EnumMap<>(EncodeHintType.class);
+        hintMap.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        hintMap.put(EncodeHintType.MARGIN, 1);
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+        return hintMap;
     }
 
-    public QrCodeProcessingResult generateQrCodeEmail(QrCodeEmail qrCodeEmail) {
-        String extracted = new QrCodeEmailParser(qrCodeEmail).parse();
-        return this.generateImageAsBase64(extracted);
-    }
-
-    public QrCodeProcessingResult generateQrCodePhone(QrCodePhone qrCodePhone) {
-        String extracted = new QrCodePhoneParser(qrCodePhone).parse();
-        return this.generateImageAsBase64(extracted);
-    }
-
-    public QrCodeProcessingResult generateQrCodeVCard(QrCodeVCard qrCodeVCard) {
-        String extracted = new QrCodeVCardParser(qrCodeVCard).parse();
-        return this.generateImageAsBase64(extracted);
-    }
 }

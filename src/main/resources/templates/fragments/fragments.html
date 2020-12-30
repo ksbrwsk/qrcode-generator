@@ -3,12 +3,12 @@
 <head th:fragment="common-head">
     <meta charset="UTF-8"/>
     <title>QR Code Generator</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}">
+    <meta content="IE=11" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css} "/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" type="text/css" th:src="@{/webjars/font-awesome/5.15.1/css/all.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+    <link rel="stylesheet" th:src="@{/webjars/font-awesome/5.15.1/css/all.min.css}" type="text/css"/>
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
@@ -18,13 +18,14 @@
 <header th:fragment="common-header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/" data-toggle="tooltip" data-placement="top" title="zur &Uuml;bersicht">
+            <a class="navbar-brand" data-placement="top" data-toggle="tooltip" href="/" title="zur &Uuml;bersicht">
                 <p class="navbar-text" th:text="${titleMessage}">...</p>
             </a>
 
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbarNavAltMarkup" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -42,6 +43,9 @@
                     <a class="nav-link" href="/qr-code-phone">Phone</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/qr-code-sms">SMS</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/qr-code-vcard">VCard</a>
                 </li>
             </ul>
@@ -53,7 +57,7 @@
     <div th:if="${errorMessage != null}">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <span th:text="${errorMessage}">...</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -62,7 +66,7 @@
     <div th:if="${successMessage != null}">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <span th:text="${successMessage}">...</span>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button aria-label="Close" class="close" data-dismiss="alert" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -88,21 +92,21 @@
                         <h5>Generate QR Code for URL</h5>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/process/url}" name="qrCodeUrl" id="qrCodeUrl"
-                              th:object="${qrCodeUrl}" method="POST">
+                        <form id="qrCodeUrl" method="POST" name="qrCodeUrl"
+                              th:action="@{/process/url}" th:object="${qrCodeUrl}">
                             <div class="form-group">
                                 <label for="urlToBeEncoded">URL:</label>
-                                <input type="text" id="urlToBeEncoded" class="form-control"
+                                <input autofocus="true" class="form-control" form="qrCodeUrl"
+                                       id="urlToBeEncoded"
                                        name="urlToBeEncoded"
                                        th:field="*{urlToBeEncoded}"
-                                       form="qrCodeUrl"
-                                       autofocus="true"/>
+                                       type="text"/>
                                 </input>
-                                <small id="urlToBeEncodedHelp" class="form-text text-muted-error"
-                                       th:if="${#fields.hasErrors('urlToBeEncoded')}" th:errors="*{urlToBeEncoded}"/>
+                                <small class="form-text text-muted-error" id="urlToBeEncodedHelp"
+                                       th:errors="*{urlToBeEncoded}" th:if="${#fields.hasErrors('urlToBeEncoded')}"/>
 
                             </div>
-                            <button class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="top"
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
                                     title="generate QR Code">
                                 Generate &raquo;
                             </button>
@@ -122,33 +126,33 @@
                         <h5>Generate QR Code for EMail</h5>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/process/email}" name="qrCodeEmail" id="qrCodeEmail"
-                              th:object="${qrCodeEmail}" method="POST">
+                        <form id="qrCodeEmail" method="POST" name="qrCodeEmail"
+                              th:action="@{/process/email}" th:object="${qrCodeEmail}">
                             <div class="form-group">
                                 <label for="emailToBeEncoded">EMail:</label>
-                                <input type="text" id="emailToBeEncoded" class="form-control"
+                                <input autofocus="true" class="form-control" form="qrCodeEmail"
+                                       id="emailToBeEncoded"
                                        name="emailToBeEncoded"
                                        th:field="*{emailToBeEncoded}"
-                                       form="qrCodeEmail"
-                                       autofocus="true"/>
+                                       type="text"/>
                                 </input>
-                                <small id="emailToBeEncodedHelp" class="form-text text-muted-error"
-                                       th:if="${#fields.hasErrors('emailToBeEncoded')}"
-                                       th:errors="*{emailToBeEncoded}"/>
+                                <small class="form-text text-muted-error" id="emailToBeEncodedHelp"
+                                       th:errors="*{emailToBeEncoded}"
+                                       th:if="${#fields.hasErrors('emailToBeEncoded')}"/>
                             </div>
                             <div class="form-group">
                                 <label for="subjectToBeEncoded">Subject:</label>
-                                <input type="text" id="subjectToBeEncoded" class="form-control"
+                                <input autofocus="true" class="form-control" form="qrCodeEmail"
+                                       id="subjectToBeEncoded"
                                        name="subjectToBeEncoded"
                                        th:field="*{subjectToBeEncoded}"
-                                       form="qrCodeEmail"
-                                       autofocus="true"/>
+                                       type="text"/>
                                 </input>
-                                <small id="subjectToBeEncodedHelp" class="form-text text-muted-error"
-                                       th:if="${#fields.hasErrors('subjectToBeEncoded')}"
-                                       th:errors="*{subjectToBeEncoded}"/>
+                                <small class="form-text text-muted-error" id="subjectToBeEncodedHelp"
+                                       th:errors="*{subjectToBeEncoded}"
+                                       th:if="${#fields.hasErrors('subjectToBeEncoded')}"/>
                             </div>
-                            <button class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="top"
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
                                     title="generate QR Code">
                                 Generate &raquo;
                             </button>
@@ -159,6 +163,53 @@
         </div>
     </div>
 </div>
+<div th:fragment="qr-code-sms">
+    <div th:if="${qrCodeSms != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR Code for SMS</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="qrCodeSms" method="POST" name="qrCodeSms"
+                              th:action="@{/process/sms}" th:object="${qrCodeSms}">
+                            <div class="form-group">
+                                <label for="phoneToBeEncoded">Phone:</label>
+                                <input autofocus="true" class="form-control" form="qrCodeSms"
+                                       id="phoneToBeEncoded"
+                                       name="phoneToBeEncoded"
+                                       th:field="*{phoneToBeEncoded}"
+                                       type="text"/>
+                                </input>
+                                <small class="form-text text-muted-error" id="phoneToBeEncodedHelp"
+                                       th:errors="*{phoneToBeEncoded}"
+                                       th:if="${#fields.hasErrors('phoneToBeEncoded')}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageToBeEncoded">Message:</label>
+                                <input autofocus="true" class="form-control" form="qrCodeSms"
+                                       id="messageToBeEncoded"
+                                       name="messageToBeEncoded"
+                                       th:field="*{messageToBeEncoded}"
+                                       type="text"/>
+                                </input>
+                                <small class="form-text text-muted-error" id="messageToBeEncodedHelp"
+                                       th:errors="*{messageToBeEncoded}"
+                                       th:if="${#fields.hasErrors('messageToBeEncoded')}"/>
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:fragment="qr-code-phone">
     <div th:if="${qrCodePhone != null}">
         <div class="row">
@@ -168,21 +219,21 @@
                         <h5>Generate QR Code for Phone Number</h5>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/process/phone}" name="qrCodePhone" id="qrCodePhone"
-                              th:object="${qrCodePhone}" method="POST">
+                        <form id="qrCodePhone" method="POST" name="qrCodePhone"
+                              th:action="@{/process/phone}" th:object="${qrCodePhone}">
                             <div class="form-group">
                                 <label for="phoneToBeEncoded">Phone Number:</label>
-                                <input type="text" id="phoneToBeEncoded" class="form-control"
+                                <input autofocus="true" class="form-control" form="qrCodePhone"
+                                       id="phoneToBeEncoded"
                                        name="phoneToBeEncoded"
                                        th:field="*{phoneToBeEncoded}"
-                                       form="qrCodePhone"
-                                       autofocus="true"/>
+                                       type="text"/>
                                 </input>
-                                <small id="phoneToBeEncodedHelp" class="form-text text-muted-error"
-                                       th:if="${#fields.hasErrors('phoneToBeEncoded')}"
-                                       th:errors="*{phoneToBeEncoded}"/>
+                                <small class="form-text text-muted-error" id="phoneToBeEncodedHelp"
+                                       th:errors="*{phoneToBeEncoded}"
+                                       th:if="${#fields.hasErrors('phoneToBeEncoded')}"/>
                             </div>
-                            <button class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="top"
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
                                     title="generate QR Code">
                                 Generate &raquo;
                             </button>
@@ -202,32 +253,32 @@
                         <h5>Generate QR Code for Address Card</h5>
                     </div>
                     <div class="card-body">
-                        <form th:action="@{/process/vcard}" name="qrCodeVCard" id="qrCodeVCard"
-                              th:object="${qrCodeVCard}" method="POST">
+                        <form id="qrCodeVCard" method="POST" name="qrCodeVCard"
+                              th:action="@{/process/vcard}" th:object="${qrCodeVCard}">
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" placeholder="Name"
+                                        <input autofocus="true" class="form-control" form="qrCodeVCard" id="name"
                                                name="name"
+                                               placeholder="Name"
                                                th:field="*{name}"
-                                               form="qrCodeVCard"
-                                               autofocus="true"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="nameHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+                                        <small class="form-text text-muted-error" id="nameHelp"
+                                               th:errors="*{name}" th:if="${#fields.hasErrors('name')}"/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="lastname">Lastname</label>
-                                        <input type="text" id="lastname" class="form-control" placeholder="Lastname"
-                                               name="lastname"
+                                        <input class="form-control" form="qrCodeVCard" id="lastname" name="lastname"
+                                               placeholder="Lastname"
                                                th:field="*{lastname}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="lastnameHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"/>
+                                        <small class="form-text text-muted-error" id="lastnameHelp"
+                                               th:errors="*{lastname}" th:if="${#fields.hasErrors('lastname')}"/>
                                     </div>
                                 </div>
                             </div>
@@ -235,27 +286,27 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="organisation">Organisation</label>
-                                        <input type="text" id="organisation" class="form-control"
-                                               placeholder="Organisation"
+                                        <input class="form-control" form="qrCodeVCard" id="organisation"
                                                name="organisation"
+                                               placeholder="Organisation"
                                                th:field="*{organisation}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="organisationHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('organisation')}"
-                                               th:errors="*{organisation}"/>
+                                        <small class="form-text text-muted-error" id="organisationHelp"
+                                               th:errors="*{organisation}"
+                                               th:if="${#fields.hasErrors('organisation')}"/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="title">Title</label>
-                                        <input type="text" id="title" class="form-control" placeholder="Title"
-                                               name="title"
+                                        <input class="form-control" form="qrCodeVCard" id="title" name="title"
+                                               placeholder="Title"
                                                th:field="*{title}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="titleHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+                                        <small class="form-text text-muted-error" id="titleHelp"
+                                               th:errors="*{title}" th:if="${#fields.hasErrors('title')}"/>
                                     </div>
                                 </div>
                             </div>
@@ -263,25 +314,25 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="email1">EMail</label>
-                                        <input type="text" id="email1" class="form-control" placeholder="EMail"
-                                               name="email1"
+                                        <input class="form-control" form="qrCodeVCard" id="email1" name="email1"
+                                               placeholder="EMail"
                                                th:field="*{email1}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="email1Help" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('email1')}" th:errors="*{email1}"/>
+                                        <small class="form-text text-muted-error" id="email1Help"
+                                               th:errors="*{email1}" th:if="${#fields.hasErrors('email1')}"/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="phone1">Phone</label>
-                                        <input type="text" id="phone1" class="form-control" placeholder="Phone"
-                                               name="phone1"
+                                        <input class="form-control" form="qrCodeVCard" id="phone1" name="phone1"
+                                               placeholder="Phone"
                                                th:field="*{phone1}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="phone1Help" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('phone1')}" th:errors="*{phone1}"/>
+                                        <small class="form-text text-muted-error" id="phone1Help"
+                                               th:errors="*{phone1}" th:if="${#fields.hasErrors('phone1')}"/>
                                     </div>
                                 </div>
                             </div>
@@ -299,14 +350,15 @@
 
                                     <div class="form-group">
                                         <label for="adress1Street">Street</label>
-                                        <input type="text" id="adress1Street" class="form-control" placeholder="Street"
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Street"
                                                name="adress1Street"
+                                               placeholder="Street"
                                                th:field="*{adress1Street}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="adress1StreetHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('adress1Street')}"
-                                               th:errors="*{adress1Street}"/>
+                                        <small class="form-text text-muted-error" id="adress1StreetHelp"
+                                               th:errors="*{adress1Street}"
+                                               th:if="${#fields.hasErrors('adress1Street')}"/>
                                     </div>
                                 </div>
                             </div>
@@ -314,28 +366,29 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="adress1Locality">Locality</label>
-                                        <input type="text" id="adress1Locality" class="form-control"
-                                               placeholder="Locality"
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Locality"
                                                name="adress1Locality"
+                                               placeholder="Locality"
                                                th:field="*{adress1Locality}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="adress1LocalityHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('adress1Locality')}"
-                                               th:errors="*{adress1Locality}"/>
+                                        <small class="form-text text-muted-error" id="adress1LocalityHelp"
+                                               th:errors="*{adress1Locality}"
+                                               th:if="${#fields.hasErrors('adress1Locality')}"/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="adress1Region">Region</label>
-                                        <input type="text" id="adress1Region" class="form-control" placeholder="Region"
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Region"
                                                name="adress1Region"
+                                               placeholder="Region"
                                                th:field="*{adress1Region}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="adress1RegionHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('adress1Region')}"
-                                               th:errors="*{adress1Region}"/>
+                                        <small class="form-text text-muted-error" id="adress1RegionHelp"
+                                               th:errors="*{adress1Region}"
+                                               th:if="${#fields.hasErrors('adress1Region')}"/>
                                     </div>
                                 </div>
                             </div>
@@ -343,29 +396,29 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="adress1PostalCode">Postal Code</label>
-                                        <input type="text" id="adress1PostalCode" class="form-control"
-                                               placeholder="Postal Code"
+                                        <input class="form-control" form="qrCodeVCard" id="adress1PostalCode"
                                                name="adress1PostalCode"
+                                               placeholder="Postal Code"
                                                th:field="*{adress1PostalCode}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="adress1PostalCodeHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('adress1PostalCode')}"
-                                               th:errors="*{adress1PostalCode}"/>
+                                        <small class="form-text text-muted-error" id="adress1PostalCodeHelp"
+                                               th:errors="*{adress1PostalCode}"
+                                               th:if="${#fields.hasErrors('adress1PostalCode')}"/>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="adress1Country">Country</label>
-                                        <input type="text" id="adress1Country" class="form-control"
-                                               placeholder="Country"
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Country"
                                                name="adress1Country"
+                                               placeholder="Country"
                                                th:field="*{adress1Country}"
-                                               form="qrCodeVCard"/>
+                                               type="text"/>
                                         </input>
-                                        <small id="adress1CountryHelp" class="form-text text-muted-error"
-                                               th:if="${#fields.hasErrors('adress1Country')}"
-                                               th:errors="*{adress1Country}"/>
+                                        <small class="form-text text-muted-error" id="adress1CountryHelp"
+                                               th:errors="*{adress1Country}"
+                                               th:if="${#fields.hasErrors('adress1Country')}"/>
                                     </div>
                                 </div>
                             </div>
@@ -382,7 +435,7 @@
                                 <div class="col">
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="top"
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
                                     title="generate QR Code">
                                 Generate &raquo;
                             </button>
@@ -419,7 +472,7 @@
         </div>
     </div>
 </div>
-<footer th:fragment="common-footer" class="footer">
+<footer class="footer" th:fragment="common-footer">
     <div class="container">
         <div th:if="${appInfo != null}">
             <span class="text-center align-middle" th:text="${appInfo}">...</span>

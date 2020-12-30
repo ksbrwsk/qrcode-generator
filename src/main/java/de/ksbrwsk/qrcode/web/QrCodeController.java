@@ -24,6 +24,7 @@ public class QrCodeController {
     private final static String PAGE_QR_CODE_PHONE = "qr-code-phone";
     private final static String PAGE_QR_CODE_VCARD = "qr-code-vcard";
     private final static String PAGE_QR_CODE_EMAIL = "qr-code-email";
+    private final static String PAGE_QR_CODE_SMS = "qr-code-sms";
     private final static String QR_CODE = "image";
     private final static String TEXT_TO_BE_ENCODED = "text";
     private final static String SUCCESS_MESSAGE = "successMessage";
@@ -104,6 +105,27 @@ public class QrCodeController {
             return PAGE_RESULT;
         }
         return PAGE_QR_CODE_EMAIL;
+    }
+
+    @GetMapping("/qr-code-sms")
+    public String qrCodeSms(Model model) {
+        addCommonModelAttributes(model);
+        model.addAttribute("qrCodeSms", new QrCodeSms());
+        return PAGE_QR_CODE_SMS;
+    }
+
+    @PostMapping("/process/sms")
+    public String processSms(Model model,
+                               @Valid @ModelAttribute("qrCodeSms") QrCodeSms qrCodeSms,
+                               BindingResult bindingResult) {
+        addCommonModelAttributes(model);
+        if (!bindingResult.hasErrors()) {
+            log.info("generate QR Code for Email {}", qrCodeSms.getPhoneToBeEncoded());
+            QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeSms(qrCodeSms);
+            this.addResultModelAttributes(model, result);
+            return PAGE_RESULT;
+        }
+        return PAGE_QR_CODE_SMS;
     }
 
     @GetMapping("/qr-code-vcard")

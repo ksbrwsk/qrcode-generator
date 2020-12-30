@@ -17,7 +17,7 @@ Build & run
 Application properties can be configured in
 
 ```bash
-qrcode-generator/src/main/resources
+qrcode-generator/src/main/resources/application.properties
 ```
 
 Use
