@@ -10,7 +10,7 @@
     </parent>
     <groupId>de.ksbrwsk</groupId>
     <artifactId>qrcode-generator</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>qrcode-generator</name>
     <description>Demo project for Spring Boot with ZXing.</description>
@@ -24,7 +24,11 @@
         <commons-io.version>2.8.0</commons-io.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <jetbrains-annotations.version>20.1.0</jetbrains-annotations.version>
+        <project.scm.id>github</project.scm.id>
     </properties>
+    <scm>
+        <developerConnection>scm:git:https://github.com/ksbrwsk/qrcode-generator.git</developerConnection>
+    </scm>
 
     <dependencies>
         <dependency>
