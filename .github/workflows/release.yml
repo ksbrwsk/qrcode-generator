@@ -25,6 +25,7 @@ jobs:
         run: |
           git config user.email "kai.saborowski@googlemail.com"
           git config user.name "Kai Saborowski"
+          chmod +x mvnw
       - name: Publish JAR
         run: ./mvnw -B release:prepare release:perform
         env:
