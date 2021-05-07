@@ -16,7 +16,7 @@
     <description>Demo project for Spring Boot with ZXing.</description>
 
     <properties>
-        <java.version>15</java.version>
+        <java.version>16</java.version>
         <webjars-locator.version>0.40</webjars-locator.version>
         <bootstrap.version>5.0.0</bootstrap.version>
         <font-awesome.version>5.15.2</font-awesome.version>
