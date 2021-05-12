@@ -10,11 +10,11 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
 @SpringBootTest
 public class QrCodeDecoderTests {
 
-    @Autowired QrCodeDecoder qrCodeDecoder;
+    @Autowired
+    QrCodeDecoder qrCodeDecoder;
 
     @Test
     public void thatDecodingQrCodeEmailPasses() throws Exception {

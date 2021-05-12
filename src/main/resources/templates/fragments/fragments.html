@@ -18,8 +18,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                    data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,6 +32,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/qr-code-phone">Phone</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/qr-code-facetime">Facetime</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/qr-code-sms">SMS</a>
@@ -50,14 +53,14 @@
     <div th:if="${errorMessage != null}">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong><span th:text="${errorMessage}">...</span></strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
         </div>
     </div>
 
     <div th:if="${successMessage != null}">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong><span th:text="${successMessage}">...</span></strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
         </div>
     </div>
 </div>
@@ -82,14 +85,14 @@
                         <h5>Generate QR Code for URL</h5>
                     </div>
                     <div class="card-body">
-                        <form id="qrCodeUrl" method="POST" name="qrCodeUrl" class="form-floating"
+                        <form class="form-floating" id="qrCodeUrl" method="POST" name="qrCodeUrl"
                               th:action="@{/process/url}" th:object="${qrCodeUrl}">
                             <div class="form-floating mb-4">
                                 <input autofocus="true" class="form-control is-invalid" form="qrCodeUrl"
                                        id="urlToBeEncoded"
                                        name="urlToBeEncoded"
-                                       th:field="*{urlToBeEncoded}"
                                        required
+                                       th:field="*{urlToBeEncoded}"
                                        type="text"/>
                                 <label for="urlToBeEncoded">URL:</label>
 
@@ -118,14 +121,14 @@
                         <h5>Generate QR Code for EMail</h5>
                     </div>
                     <div class="card-body">
-                        <form id="qrCodeEmail" method="POST" name="qrCodeEmail" class="form-floating"
+                        <form class="form-floating" id="qrCodeEmail" method="POST" name="qrCodeEmail"
                               th:action="@{/process/email}" th:object="${qrCodeEmail}">
                             <div class="form-floating mb-4">
                                 <input autofocus="true" class="form-control is-invalid" form="qrCodeEmail"
                                        id="emailToBeEncoded"
                                        name="emailToBeEncoded"
-                                       th:field="*{emailToBeEncoded}"
                                        required
+                                       th:field="*{emailToBeEncoded}"
                                        type="text"/>
                                 <label for="emailToBeEncoded">EMail:</label>
 
@@ -164,7 +167,7 @@
                         <h5>Generate QR Code for SMS</h5>
                     </div>
                     <div class="card-body">
-                        <form id="qrCodeSms" method="POST" name="qrCodeSms" class="form-floating"
+                        <form class="form-floating" id="qrCodeSms" method="POST" name="qrCodeSms"
                               th:action="@{/process/sms}" th:object="${qrCodeSms}">
                             <div class="form-floating mb-4">
                                 <input autofocus="true" class="form-control is-invalid" form="qrCodeSms"
@@ -211,7 +214,7 @@
                         <h5>Generate QR Code for Phone Number</h5>
                     </div>
                     <div class="card-body">
-                        <form id="qrCodePhone" method="POST" name="qrCodePhone" class="form-floating"
+                        <form class="form-floating" id="qrCodePhone" method="POST" name="qrCodePhone"
                               th:action="@{/process/phone}" th:object="${qrCodePhone}">
                             <div class="form-floating mb-4">
                                 <input autofocus="true" class="form-control is-invalid" form="qrCodePhone"
@@ -236,6 +239,41 @@
         </div>
     </div>
 </div>
+<div th:fragment="qr-code-facetime">
+    <div th:if="${qrCodeFacetime != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR Code for Fcaetime Number</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-floating" id="qrCodeFacetime" method="POST" name="qrCodeFacetime"
+                              th:action="@{/process/facetime}" th:object="${qrCodeFacetime}">
+                            <div class="form-floating mb-4">
+                                <input autofocus="true" class="form-control is-invalid" form="qrCodeFacetime"
+                                       id="facetimeToBeEncoded"
+                                       name="facetimeToBeEncoded"
+                                       required
+                                       th:field="*{facetimeToBeEncoded}"
+                                       type="text"/>
+                                <label for="facetimeToBeEncoded">Phone Number:</label>
+                                <small class="form-text text-muted-error" id="facetimeToBeEncodedHelp"
+                                       th:errors="*{facetimeToBeEncoded}"
+                                       th:if="${#fields.hasErrors('facetimeToBeEncoded')}"></small>
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:fragment="qr-code-vcard">
     <div th:if="${qrCodeVCard != null}">
         <div class="row">
@@ -245,16 +283,17 @@
                         <h5>Generate QR Code for Address Card</h5>
                     </div>
                     <div class="card-body">
-                        <form id="qrCodeVCard" method="POST" name="qrCodeVCard" class="form-floating"
+                        <form class="form-floating" id="qrCodeVCard" method="POST" name="qrCodeVCard"
                               th:action="@{/process/vcard}" th:object="${qrCodeVCard}">
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-floating mb-4">
-                                        <input autofocus="true" class="form-control is-invalid" form="qrCodeVCard" id="name"
+                                        <input autofocus="true" class="form-control is-invalid" form="qrCodeVCard"
+                                               id="name"
                                                name="name"
                                                placeholder="Name"
-                                               th:field="*{name}"
                                                required
+                                               th:field="*{name}"
                                                type="text"/>
                                         <label for="name">Name</label>
                                         <small class="form-text text-muted-error" id="nameHelp"
@@ -263,10 +302,11 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-floating mb-4">
-                                        <input class="form-control is-invalid" form="qrCodeVCard" id="lastname" name="lastname"
+                                        <input class="form-control is-invalid" form="qrCodeVCard" id="lastname"
+                                               name="lastname"
                                                placeholder="Lastname"
-                                               th:field="*{lastname}"
                                                required
+                                               th:field="*{lastname}"
                                                type="text"/>
                                         <label for="lastname">Lastname</label>
                                         <small class="form-text text-muted-error" id="lastnameHelp"

@@ -7,10 +7,9 @@ import org.springframework.validation.BindingResult;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 public class QrCodeEmailTest {
 
-   @Test
+    @Test
     public void thatQrCodeMailIsValid() {
         QrCodeEmail qrCodeEmail = new QrCodeEmail("email@email.com");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodeEmail);

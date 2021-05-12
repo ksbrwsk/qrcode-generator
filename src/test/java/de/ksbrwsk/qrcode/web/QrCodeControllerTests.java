@@ -13,7 +13,6 @@ import org.springframework.validation.support.BindingAwareModelMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @SpringBootTest
 public class QrCodeControllerTests {
 

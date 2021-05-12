@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 /**
  * # Address
  * mailto:someone@yoursite.com
- *
+ * <p>
  * # Address, subject
  * mailto:someone@yoursite.com?subject=Mail%20from%20Our%20Site
  */

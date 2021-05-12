@@ -9,21 +9,20 @@ import javax.validation.constraints.NotEmpty;
 /**
  * Form:
  * <p>
- * tel:+12125551212
+ * facetime://+12125551212
  */
 @Getter
 @Setter
 @Validated
-public class QrCodePhone {
+public class QrCodeFacetime {
 
     @NotEmpty
-    private String phoneToBeEncoded;
+    private String facetimeToBeEncoded;
 
-    public QrCodePhone() {
+    public QrCodeFacetime() {
     }
 
-    public QrCodePhone(String phoneToBeEncoded) {
-        this.phoneToBeEncoded = phoneToBeEncoded;
+    public QrCodeFacetime(String facetimeToBeEncoded) {
+        this.facetimeToBeEncoded = facetimeToBeEncoded;
     }
-
 }

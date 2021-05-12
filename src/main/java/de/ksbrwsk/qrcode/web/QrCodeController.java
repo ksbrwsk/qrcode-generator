@@ -22,6 +22,7 @@ public class QrCodeController {
     private final static String PAGE_RESULT = "result";
     private final static String PAGE_QR_CODE_URL = "qr-code-url";
     private final static String PAGE_QR_CODE_PHONE = "qr-code-phone";
+    private final static String PAGE_QR_CODE_FACETIME = "qr-code-facetime";
     private final static String PAGE_QR_CODE_VCARD = "qr-code-vcard";
     private final static String PAGE_QR_CODE_EMAIL = "qr-code-email";
     private final static String PAGE_QR_CODE_SMS = "qr-code-sms";
@@ -72,6 +73,13 @@ public class QrCodeController {
         return PAGE_QR_CODE_PHONE;
     }
 
+    @GetMapping("/qr-code-facetime")
+    public String qrCodeFacetime(Model model) {
+        addCommonModelAttributes(model);
+        model.addAttribute("qrCodeFacetime", new QrCodeFacetime());
+        return PAGE_QR_CODE_FACETIME;
+    }
+
     @PostMapping("/process/phone")
     public String processPhone(Model model,
                                @Valid @ModelAttribute("qrCodePhone") QrCodePhone qrCodePhone,
@@ -84,6 +92,20 @@ public class QrCodeController {
             return PAGE_RESULT;
         }
         return PAGE_QR_CODE_PHONE;
+    }
+
+    @PostMapping("/process/facetime")
+    public String processFacetime(Model model,
+                                  @Valid @ModelAttribute("qrCodeFacetime") QrCodeFacetime qrCodeFacetime,
+                                  BindingResult bindingResult) {
+        addCommonModelAttributes(model);
+        if (!bindingResult.hasErrors()) {
+            log.info("generate QR Code for Facetime number {}", qrCodeFacetime.getFacetimeToBeEncoded());
+            QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeFacetime(qrCodeFacetime);
+            this.addResultModelAttributes(model, result);
+            return PAGE_RESULT;
+        }
+        return PAGE_QR_CODE_FACETIME;
     }
 
     @GetMapping("/qr-code-email")
@@ -116,8 +138,8 @@ public class QrCodeController {
 
     @PostMapping("/process/sms")
     public String processSms(Model model,
-                               @Valid @ModelAttribute("qrCodeSms") QrCodeSms qrCodeSms,
-                               BindingResult bindingResult) {
+                             @Valid @ModelAttribute("qrCodeSms") QrCodeSms qrCodeSms,
+                             BindingResult bindingResult) {
         addCommonModelAttributes(model);
         if (!bindingResult.hasErrors()) {
             log.info("generate QR Code for Email {}", qrCodeSms.getPhoneToBeEncoded());

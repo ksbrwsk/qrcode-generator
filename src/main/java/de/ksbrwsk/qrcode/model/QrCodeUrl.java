@@ -17,7 +17,8 @@ public class QrCodeUrl {
     @NotEmpty
     private String urlToBeEncoded;
 
-    public QrCodeUrl() { }
+    public QrCodeUrl() {
+    }
 
     public QrCodeUrl(String urlToBeEncoded) {
         this.urlToBeEncoded = urlToBeEncoded;

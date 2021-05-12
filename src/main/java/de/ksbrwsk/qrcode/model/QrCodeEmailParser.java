@@ -14,7 +14,7 @@ public class QrCodeEmailParser extends AbstractQrCodeParser {
     public String parse() {
         StringBuilder buffer = new StringBuilder("mailto:");
         buffer.append(this.qrCodeEmail.getEmailToBeEncoded());
-        if(StringUtils.isNotEmpty(this.qrCodeEmail.getSubjectToBeEncoded())) {
+        if (StringUtils.isNotEmpty(this.qrCodeEmail.getSubjectToBeEncoded())) {
             buffer.append("?subject=");
             buffer.append(StringUtils.replace(this.qrCodeEmail.getSubjectToBeEncoded(), " ", "%20"));
         }

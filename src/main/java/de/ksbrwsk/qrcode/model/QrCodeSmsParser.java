@@ -14,7 +14,7 @@ public class QrCodeSmsParser extends AbstractQrCodeParser {
     public String parse() {
         StringBuilder buffer = new StringBuilder("sms:");
         buffer.append(this.qrCodeSms.getPhoneToBeEncoded());
-        if(StringUtils.isNotEmpty(this.qrCodeSms.getMessageToBeEncoded())) {
+        if (StringUtils.isNotEmpty(this.qrCodeSms.getMessageToBeEncoded())) {
             buffer.append("?sms_body=");
             buffer.append(StringUtils.replace(this.qrCodeSms.getMessageToBeEncoded(), " ", "%20"));
         }

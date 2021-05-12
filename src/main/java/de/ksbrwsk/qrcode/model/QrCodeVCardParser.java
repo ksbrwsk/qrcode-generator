@@ -41,61 +41,61 @@ public class QrCodeVCardParser extends AbstractQrCodeParser {
                 .append(this.qrCodeVCard.getLastname())
                 .append("\n");
 
-                if(StringUtils.isNotEmpty(this.qrCodeVCard.getTitle())) {
-                    builder.append("TITLE:");
-                    builder.append(this.qrCodeVCard.getTitle());
-                    builder.append("\n");
-                }
-                if(StringUtils.isNotEmpty(this.qrCodeVCard.getOrganisation())) {
-                    builder.append("ORG:");
-                    builder.append(this.qrCodeVCard.getOrganisation());
-                    builder.append("\n");
-                }
-                if(StringUtils.isNotEmpty(this.qrCodeVCard.getEmail1())) {
-                    builder.append("EMAIL:")
-                            .append(this.qrCodeVCard.getEmail1())
-                            .append("\n");
-                }
-                if(StringUtils.isNotEmpty(this.qrCodeVCard.getEmail2())) {
-                    builder.append("EMAIL:")
-                            .append(this.qrCodeVCard.getEmail2())
-                            .append("\n");
-                }
-                if(StringUtils.isNotEmpty(this.qrCodeVCard.getPhone1())) {
-                    builder.append("TEL;TYPE=")
-                            .append(this.qrCodeVCard.getPhone1Type())
-                            .append(":")
-                            .append(this.qrCodeVCard.getPhone1())
-                            .append("\n");
-                }
-                if(StringUtils.isNotEmpty(this.qrCodeVCard.getAdress1Street())) {
-                    builder.append("ADR;TYPE=")
-                        .append(this.qrCodeVCard.getAdress1Type())
-                        .append(":;;")
-                        .append(this.qrCodeVCard.getAdress1Street())
-                        .append(";")
-                        .append(this.qrCodeVCard.getAdress1Locality())
-                        .append(";")
-                        .append(this.qrCodeVCard.getAdress1Region())
-                        .append(";")
-                        .append(this.qrCodeVCard.getAdress1PostalCode())
-                        .append(";")
-                        .append(this.qrCodeVCard.getAdress1Country())
-                        .append("\n")
-                        .append("LABEL;TYPE=")
-                        .append(this.qrCodeVCard.getAdress1Type())
-                        .append(":")
-                        .append(this.qrCodeVCard.getAdress1Street())
-                        .append("\n")
-                        .append(this.qrCodeVCard.getAdress1Locality())
-                        .append(",")
-                        .append(this.qrCodeVCard.getAdress1Region())
-                        .append(" ")
-                        .append(this.qrCodeVCard.getAdress1PostalCode())
-                        .append("\n")
-                        .append(this.qrCodeVCard.getAdress1Country())
-                        .append("\n");
-                }
+        if (StringUtils.isNotEmpty(this.qrCodeVCard.getTitle())) {
+            builder.append("TITLE:");
+            builder.append(this.qrCodeVCard.getTitle());
+            builder.append("\n");
+        }
+        if (StringUtils.isNotEmpty(this.qrCodeVCard.getOrganisation())) {
+            builder.append("ORG:");
+            builder.append(this.qrCodeVCard.getOrganisation());
+            builder.append("\n");
+        }
+        if (StringUtils.isNotEmpty(this.qrCodeVCard.getEmail1())) {
+            builder.append("EMAIL:")
+                    .append(this.qrCodeVCard.getEmail1())
+                    .append("\n");
+        }
+        if (StringUtils.isNotEmpty(this.qrCodeVCard.getEmail2())) {
+            builder.append("EMAIL:")
+                    .append(this.qrCodeVCard.getEmail2())
+                    .append("\n");
+        }
+        if (StringUtils.isNotEmpty(this.qrCodeVCard.getPhone1())) {
+            builder.append("TEL;TYPE=")
+                    .append(this.qrCodeVCard.getPhone1Type())
+                    .append(":")
+                    .append(this.qrCodeVCard.getPhone1())
+                    .append("\n");
+        }
+        if (StringUtils.isNotEmpty(this.qrCodeVCard.getAdress1Street())) {
+            builder.append("ADR;TYPE=")
+                    .append(this.qrCodeVCard.getAdress1Type())
+                    .append(":;;")
+                    .append(this.qrCodeVCard.getAdress1Street())
+                    .append(";")
+                    .append(this.qrCodeVCard.getAdress1Locality())
+                    .append(";")
+                    .append(this.qrCodeVCard.getAdress1Region())
+                    .append(";")
+                    .append(this.qrCodeVCard.getAdress1PostalCode())
+                    .append(";")
+                    .append(this.qrCodeVCard.getAdress1Country())
+                    .append("\n")
+                    .append("LABEL;TYPE=")
+                    .append(this.qrCodeVCard.getAdress1Type())
+                    .append(":")
+                    .append(this.qrCodeVCard.getAdress1Street())
+                    .append("\n")
+                    .append(this.qrCodeVCard.getAdress1Locality())
+                    .append(",")
+                    .append(this.qrCodeVCard.getAdress1Region())
+                    .append(" ")
+                    .append(this.qrCodeVCard.getAdress1PostalCode())
+                    .append("\n")
+                    .append(this.qrCodeVCard.getAdress1Country())
+                    .append("\n");
+        }
         builder.append("END:VCARD");
         return builder.toString();
     }

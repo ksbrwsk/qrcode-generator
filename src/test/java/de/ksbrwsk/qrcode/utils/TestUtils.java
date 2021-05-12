@@ -7,10 +7,10 @@ import org.springframework.validation.support.BindingAwareModelMap;
 
 public class TestUtils {
 
+    private static final LocalValidatorFactoryBean LOCAL_VALIDATOR_FACTORY_BEAN = createLocalValidatorFactoryBean();
+
     private TestUtils() {
     }
-
-    private static LocalValidatorFactoryBean LOCAL_VALIDATOR_FACTORY_BEAN = createLocalValidatorFactoryBean();
 
     private static LocalValidatorFactoryBean createLocalValidatorFactoryBean() {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();

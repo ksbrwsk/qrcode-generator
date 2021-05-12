@@ -9,11 +9,11 @@ public class QrCodeVCardParserTests {
     @Test
     public void thatParseVCardCanPasses() {
         String expected = "BEGIN:VCARD\n" +
-        "VERSION:4.0\n" +
-        "N:Norris;Chuck;;;\n" +
-        "FN:Chuck Norris\n" +
-        "TITLE:Mr. Roundhousekick\n" +
-        "END:VCARD";
+                "VERSION:4.0\n" +
+                "N:Norris;Chuck;;;\n" +
+                "FN:Chuck Norris\n" +
+                "TITLE:Mr. Roundhousekick\n" +
+                "END:VCARD";
         QrCodeVCard qrCodeVCard = new QrCodeVCard();
         qrCodeVCard.setName("Chuck");
         qrCodeVCard.setLastname("Norris");

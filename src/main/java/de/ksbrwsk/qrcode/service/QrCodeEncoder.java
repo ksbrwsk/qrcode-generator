@@ -8,7 +8,6 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import de.ksbrwsk.qrcode.model.*;
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
@@ -44,6 +43,11 @@ public class QrCodeEncoder {
 
     public QrCodeProcessingResult generateQrCodePhone(QrCodePhone qrCodePhone) {
         String extracted = new QrCodePhoneParser(qrCodePhone).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
+    public QrCodeProcessingResult generateQrCodeFacetime(QrCodeFacetime qrCodeFacetime) {
+        String extracted = new QrCodeFacetimeParser(qrCodeFacetime).parse();
         return this.generateImageAsBase64(extracted);
     }
 
