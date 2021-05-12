@@ -1,4 +1,4 @@
-FROM adoptopenjdk:15-jre-hotspot
+FROM adoptopenjdk:16-jre-hotspot
 MAINTAINER kai.saborowski@googlemail.com
 
 EXPOSE 8080
