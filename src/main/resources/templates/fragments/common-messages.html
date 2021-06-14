@@ -1,0 +1,15 @@
+<div th:fragment="common-messages">
+    <div th:if="${errorMessage != null}">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong><span th:text="${errorMessage}">...</span></strong>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
+        </div>
+    </div>
+
+    <div th:if="${successMessage != null}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong><span th:text="${successMessage}">...</span></strong>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
+        </div>
+    </div>
+</div>

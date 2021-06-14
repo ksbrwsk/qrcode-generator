@@ -1,0 +1,46 @@
+<div th:fragment="qr-code-email">
+    <div th:if="${qrCodeEmail != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR code for email</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-floating" id="qrCodeEmail" method="POST" name="qrCodeEmail"
+                              th:action="@{/process/email}" th:object="${qrCodeEmail}">
+                            <div class="form-floating mb-4">
+                                <input autofocus="true" class="form-control is-invalid" form="qrCodeEmail"
+                                       id="emailToBeEncoded"
+                                       name="emailToBeEncoded"
+                                       required
+                                       th:field="*{emailToBeEncoded}"
+                                       type="text"/>
+                                <label for="emailToBeEncoded">EMail:</label>
+
+                                <small class="form-text text-muted-error" id="emailToBeEncodedHelp"
+                                       th:errors="*{emailToBeEncoded}"
+                                       th:if="${#fields.hasErrors('emailToBeEncoded')}"></small>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input class="form-control" form="qrCodeEmail"
+                                       id="subjectToBeEncoded"
+                                       name="subjectToBeEncoded"
+                                       th:field="*{subjectToBeEncoded}"
+                                       type="text"/>
+                                <label for="subjectToBeEncoded">Subject:</label>
+                                <small class="form-text text-muted-error" id="subjectToBeEncodedHelp"
+                                       th:errors="*{subjectToBeEncoded}"
+                                       th:if="${#fields.hasErrors('subjectToBeEncoded')}"></small>
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

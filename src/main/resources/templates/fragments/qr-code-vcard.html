@@ -1,0 +1,195 @@
+<div th:fragment="qr-code-vcard">
+    <div th:if="${qrCodeVCard != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR Code for address card</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-floating" id="qrCodeVCard" method="POST" name="qrCodeVCard"
+                              th:action="@{/process/vcard}" th:object="${qrCodeVCard}">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input autofocus="true" class="form-control is-invalid" form="qrCodeVCard"
+                                               id="name"
+                                               name="name"
+                                               placeholder="Name"
+                                               required
+                                               th:field="*{name}"
+                                               type="text"/>
+                                        <label for="name">Name</label>
+                                        <small class="form-text text-muted-error" id="nameHelp"
+                                               th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control is-invalid" form="qrCodeVCard" id="lastname"
+                                               name="lastname"
+                                               placeholder="Lastname"
+                                               required
+                                               th:field="*{lastname}"
+                                               type="text"/>
+                                        <label for="lastname">Lastname</label>
+                                        <small class="form-text text-muted-error" id="lastnameHelp"
+                                               th:errors="*{lastname}" th:if="${#fields.hasErrors('lastname')}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="organisation"
+                                               name="organisation"
+                                               placeholder="Organisation"
+                                               th:field="*{organisation}"
+                                               type="text"/>
+                                        <label for="organisation">Organisation</label>
+                                        <small class="form-text text-muted-error" id="organisationHelp"
+                                               th:errors="*{organisation}"
+                                               th:if="${#fields.hasErrors('organisation')}"></small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="title" name="title"
+                                               placeholder="Title"
+                                               th:field="*{title}"
+                                               type="text"/>
+                                        <label for="title">Title</label>
+                                        <small class="form-text text-muted-error" id="titleHelp"
+                                               th:errors="*{title}" th:if="${#fields.hasErrors('title')}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="email1" name="email1"
+                                               placeholder="EMail"
+                                               th:field="*{email1}"
+                                               type="text"/>
+                                        <label for="email1">EMail</label>
+                                        <small class="form-text text-muted-error" id="email1Help"
+                                               th:errors="*{email1}" th:if="${#fields.hasErrors('email1')}"></small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="phone1" name="phone1"
+                                               placeholder="Phone"
+                                               th:field="*{phone1}"
+                                               type="text"/>
+                                        <label for="phone1">Phone</label>
+                                        <small class="form-text text-muted-error" id="phone1Help"
+                                               th:errors="*{phone1}" th:if="${#fields.hasErrors('phone1')}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <select class="form-control" id="phone1Type">
+                                            <option selected>WORK</option>
+                                            <option>HOME</option>
+                                        </select>
+                                        <label for="phone1Type">Phone Type</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Street"
+                                               name="adress1Street"
+                                               placeholder="Street"
+                                               th:field="*{adress1Street}"
+                                               type="text"/>
+                                        <label for="adress1Street">Street</label>
+                                        <small class="form-text text-muted-error" id="adress1StreetHelp"
+                                               th:errors="*{adress1Street}"
+                                               th:if="${#fields.hasErrors('adress1Street')}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Locality"
+                                               name="adress1Locality"
+                                               placeholder="Locality"
+                                               th:field="*{adress1Locality}"
+                                               type="text"/>
+                                        <label for="adress1Locality">Locality</label>
+                                        <small class="form-text text-muted-error" id="adress1LocalityHelp"
+                                               th:errors="*{adress1Locality}"
+                                               th:if="${#fields.hasErrors('adress1Locality')}"></small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Region"
+                                               name="adress1Region"
+                                               placeholder="Region"
+                                               th:field="*{adress1Region}"
+                                               type="text"/>
+                                        <label for="adress1Region">Region</label>
+                                        <small class="form-text text-muted-error" id="adress1RegionHelp"
+                                               th:errors="*{adress1Region}"
+                                               th:if="${#fields.hasErrors('adress1Region')}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="adress1PostalCode"
+                                               name="adress1PostalCode"
+                                               placeholder="Postal Code"
+                                               th:field="*{adress1PostalCode}"
+                                               type="text"/>
+                                        <label for="adress1PostalCode">Postal code</label>
+                                        <small class="form-text text-muted-error" id="adress1PostalCodeHelp"
+                                               th:errors="*{adress1PostalCode}"
+                                               th:if="${#fields.hasErrors('adress1PostalCode')}"></small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control" form="qrCodeVCard" id="adress1Country"
+                                               name="adress1Country"
+                                               placeholder="Country"
+                                               th:field="*{adress1Country}"
+                                               type="text"/>
+                                        <label for="adress1Country">Country</label>
+                                        <small class="form-text text-muted-error" id="adress1CountryHelp"
+                                               th:errors="*{adress1Country}"
+                                               th:if="${#fields.hasErrors('adress1Country')}"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-floating mb-4">
+                                        <select class="form-control" id="adress1Type">
+                                            <option selected>WORK</option>
+                                            <option>HOME</option>
+                                        </select>
+                                        <label for="adress1Type">Address type</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

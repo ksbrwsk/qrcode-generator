@@ -1,0 +1,36 @@
+<div th:fragment="qr-code-url">
+    <div th:if="${qrCodeUrl != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR code for URL</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-floating" id="qrCodeUrl" method="POST" name="qrCodeUrl"
+                              th:action="@{/process/url}" th:object="${qrCodeUrl}">
+                            <div class="form-floating mb-4">
+                                <input autofocus="true" class="form-control is-invalid" form="qrCodeUrl"
+                                       id="urlToBeEncoded"
+                                       name="urlToBeEncoded"
+                                       required
+                                       th:field="*{urlToBeEncoded}"
+                                       type="text"/>
+                                <label for="urlToBeEncoded">URL:</label>
+
+                                <small class="form-text text-muted-error" id="urlToBeEncodedHelp"
+                                       th:errors="*{urlToBeEncoded}"
+                                       th:if="${#fields.hasErrors('urlToBeEncoded')}"></small>
+
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
