@@ -23,7 +23,7 @@
         <zxing.version>3.4.1</zxing.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <jetbrains-annotations.version>22.0.0</jetbrains-annotations.version>
+        <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
         <project.scm.id>github</project.scm.id>
     </properties>
     <scm>
