@@ -1,4 +1,5 @@
 /target/
+/src/main/resources/keystore.jks
 !.mvn/wrapper/maven-wrapper.jar
 manifest.yml
 .DS_Store
