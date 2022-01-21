@@ -1,10 +1,9 @@
 package de.ksbrwsk.qrcode.model;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.NotEmpty;
 
 /**
  * Format: http://google.de
@@ -23,5 +22,4 @@ public class QrCodeUrl {
     public QrCodeUrl(String urlToBeEncoded) {
         this.urlToBeEncoded = urlToBeEncoded;
     }
-
 }
