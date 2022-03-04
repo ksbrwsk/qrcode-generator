@@ -25,6 +25,17 @@ public class QrCodeDecoderTests {
         assertNotNull(actual);
         assertEquals(expected, actual);
     }
+    @Test
+    public void thatDecodingQrCodeEventPasses() throws Exception {
+        String expected = "BEGIN:VCALENDAR\nBEGIN:VEVENT\nSUMMARY:Stammtisch\nDTSTART;TZID=Europe/Berlin;VALUE=DATE-TIME:20220304T123000\nDTEND;TZID=Europe/London;VALUE=DATE-TIME:20220304T163000\nLOCATION:Miro\nEND:VEVENT\nEND:VCALENDAR";
+        ClassPathResource resource = new ClassPathResource("decodeQrCodeEvent.png");
+        File qrCodeFile = resource.getFile();
+        String actual = this.qrCodeDecoder.decodeQrCodeFile(qrCodeFile);
+        assertNotNull(actual);
+        assertEquals(expected, actual);
+    }
+
+
 
     @Test
     public void thatDecodingQrCodePhonePasses() throws Exception {

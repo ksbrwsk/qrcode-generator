@@ -1,0 +1,70 @@
+<div th:fragment="qr-code-event">
+    <div th:if="${qrCodeEvent != null}">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h5>Generate QR code for event</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-floating" id="qrCodeEvent" method="POST" name="qrCodeEvent"
+                              th:action="@{/process/event}" th:object="${qrCodeEvent}">
+                            <div class="form-floating mb-4">
+                                <input autofocus="true" class="form-control is-invalid" form="qrCodeEvent"
+                                       id="summary"
+                                       name="summary"
+                                       required
+                                       th:field="*{summary}"
+                                       type="text"/>
+                                <label for="summary">Summary:</label>
+
+                                <small class="form-text text-muted-error" id="summaryHelp"
+                                       th:errors="*{summary}"
+                                       th:if="${#fields.hasErrors('summary')}"></small>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input class="form-control" form="qrCodeEvent"
+                                       id="location"
+                                       name="location"
+                                       th:field="*{location}"
+                                       type="text"/>
+                                <label for="location">Location:</label>
+                                <small class="form-text text-muted-error" id="locationHelp"
+                                       th:errors="*{location}"
+                                       th:if="${#fields.hasErrors('location')}"></small>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input autofocus="false" class="form-control is-invalid" form="qrCodeEvent"
+                                       id="eventStart"
+                                       name="eventStart"
+                                       required
+                                       th:field="*{eventStart}"
+                                       type="datetime-local"/>
+                                <label for="eventStart">Event start:</label>
+
+                                <small class="form-text text-muted-error" id="eventStartHelp"
+                                       th:errors="*{eventStart}"
+                                       th:if="${#fields.hasErrors('eventStart')}"></small>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input class="form-control" form="qrCodeEvent"
+                                       id="eventEnd"
+                                       name="eventEnd"
+                                       th:field="*{eventEnd}"
+                                       type="datetime-local"/>
+                                <label for="eventEnd">Event end:</label>
+                                <small class="form-text text-muted-error" id="eventEndHelp"
+                                       th:errors="*{eventEnd}"
+                                       th:if="${#fields.hasErrors('eventEnd')}"></small>
+                            </div>
+                            <button class="btn btn-primary btn-block" data-placement="top" data-toggle="tooltip"
+                                    title="generate QR Code">
+                                Generate &raquo;
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
