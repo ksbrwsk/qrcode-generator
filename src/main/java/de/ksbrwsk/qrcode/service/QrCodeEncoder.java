@@ -46,6 +46,11 @@ public class QrCodeEncoder {
         return this.generateImageAsBase64(extracted);
     }
 
+    public QrCodeProcessingResult generateQrCodeEvent(QrCodeEvent qrCodeEvent) {
+        String extracted = new QrCodeEventParser(qrCodeEvent).parse();
+        return this.generateImageAsBase64(extracted);
+    }
+
     public QrCodeProcessingResult generateQrCodeFacetime(QrCodeFacetime qrCodeFacetime) {
         String extracted = new QrCodeFacetimeParser(qrCodeFacetime).parse();
         return this.generateImageAsBase64(extracted);

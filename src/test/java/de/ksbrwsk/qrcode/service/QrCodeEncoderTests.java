@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -70,6 +72,17 @@ public class QrCodeEncoderTests {
         assertNotNull(result.getImage());
         assertNotNull(result.getEncodedText());
         assertNull(result.getErrorMessage());
+    }
+
+    @Test
+    void generateQrCodeEvent() {
+        QrCodeEvent qrCodeEvent = new QrCodeEvent();
+        qrCodeEvent.setLocation("bei Miro");
+        qrCodeEvent.setSummary("Duexer Stammtisch");
+        qrCodeEvent.setEventStart(LocalDateTime.now());
+        qrCodeEvent.setEventEnd(LocalDateTime.now().plusHours(4));
+        QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeEvent(qrCodeEvent);
+        assertTrue(result.isSuccessfull());
     }
 
     @Test

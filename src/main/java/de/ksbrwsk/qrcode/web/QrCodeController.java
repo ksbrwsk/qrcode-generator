@@ -25,6 +25,8 @@ public class QrCodeController {
     private final static String PAGE_QR_CODE_VCARD = "qr-code-vcard";
     private final static String PAGE_QR_CODE_EMAIL = "qr-code-email";
     private final static String PAGE_QR_CODE_SMS = "qr-code-sms";
+    private final static String PAGE_QR_CODE_EVENT = "qr-code-event";
+
     private final static String QR_CODE = "image";
     private final static String TEXT_TO_BE_ENCODED = "text";
     private final static String SUCCESS_MESSAGE = "successMessage";
@@ -149,6 +151,13 @@ public class QrCodeController {
         return PAGE_QR_CODE_SMS;
     }
 
+    @GetMapping("/qr-code-event")
+    public String qrCodeEvent(Model model) {
+        addCommonModelAttributes(model);
+        model.addAttribute("qrCodeEvent", new QrCodeEvent());
+        return PAGE_QR_CODE_EVENT;
+    }
+
     @GetMapping("/qr-code-vcard")
     public String qrCodeVCard(Model model) {
         addCommonModelAttributes(model);
@@ -168,6 +177,20 @@ public class QrCodeController {
             return PAGE_RESULT;
         }
         return PAGE_QR_CODE_VCARD;
+    }
+
+    @PostMapping("/process/event")
+    public String processEvent(Model model,
+                               @Valid @ModelAttribute("qrCodeEvent") QrCodeEvent qrCodeEvent,
+                               BindingResult bindingResult) {
+        addCommonModelAttributes(model);
+        if (!bindingResult.hasErrors()) {
+            log.info("generate QR Code for Event {}", qrCodeEvent.getSummary());
+            QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeEvent(qrCodeEvent);
+            this.addResultModelAttributes(model, result);
+            return PAGE_RESULT;
+        }
+        return PAGE_QR_CODE_EVENT;
     }
 
     private void addCommonModelAttributes(@NotNull Model model) {
