@@ -6,7 +6,7 @@ Features
 A simple [Spring Boot](http://projects.spring.io/spring-boot/) standalone application generating QR Codes based on
 [ZXing ("Zebra Crossing")](https://github.com/zxing/zxing/) barcode scanning library.
 
-![CI build](https://github.com/ksbrwsk/qrcode-generator/workflows/CI%20build/badge.svg)
+see [live demo](https://ksbrwsk.de:9080/) on my website.
 
 Build & run 
 -----------
