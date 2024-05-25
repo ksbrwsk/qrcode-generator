@@ -17,7 +17,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <webjars-locator.version>0.50</webjars-locator.version>
+        <webjars-locator.version>0.52</webjars-locator.version>
         <font-awesome.version>6.5.1</font-awesome.version>
         <bootstrap.version>5.3.3</bootstrap.version>
         <zxing.version>3.5.3</zxing.version>
