@@ -47,7 +47,7 @@ Point your browser to
 http://localhost:8080
 ```
 
-docker build -t . qrcode-generator
+docker build -t qrcode-generator .
 docker run -d --name qrcode-generator -p 9080:8080 qrcode-generator
 
 

@@ -4,6 +4,7 @@
 manifest.yml
 .DS_Store
 src/main/resources/keystore.jks
+src/main/resources/application-ssl.properties
 ### STS ###
 .apt_generated
 .classpath
