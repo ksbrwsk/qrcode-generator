@@ -30,7 +30,7 @@ mvn clean install
 to build the application and
 
 ```bash
-java -jar target/qrcode-generator-1.0.0-SNAPSHOT.jar
+java -jar target/qrcode-generator-1.6.0-SNAPSHOT.jar
 ```
 
 or 

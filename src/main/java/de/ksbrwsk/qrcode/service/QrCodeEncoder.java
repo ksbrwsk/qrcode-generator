@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Base64Utils;
+import java.util.Base64;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -91,7 +91,7 @@ public class QrCodeEncoder {
             ImageIO.write(image, fileType, myFile);
             byte[] bytes = FileUtils.readFileToByteArray(myFile);
             imageText = "data:image/png;base64," +
-                    Base64Utils.encodeToString(bytes);
+                    Base64.getEncoder().encodeToString(bytes);
             result.setImage(imageText);
         } catch (WriterException | IOException e) {
             String msg = "Processing QR code failed.";
