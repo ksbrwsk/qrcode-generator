@@ -20,7 +20,7 @@
         <font-awesome.version>6.6.0</font-awesome.version>
         <bootstrap.version>5.3.3</bootstrap.version>
         <zxing.version>3.5.3</zxing.version>
-        <commons-io.version>2.17.0</commons-io.version>
+        <commons-io.version>2.18.0</commons-io.version>
         <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
         <project.scm.id>github</project.scm.id>
     </properties>
