@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="card" style="margin-top: 20px;">
                 <div class="card-header">
-                    <h5>Your generated QR code</h5>
+                    <h2 class="text-xl mt-2">Your generated QR code:</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -12,11 +12,11 @@
                                 <img class="info" th:attr="src=@{${image}}"/>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <div th:if="${text != null}">
-                                <span th:text="${text}">...</span>
-                            </div>
-                        </div>
+<!--                        <div class="col-md-5">-->
+<!--                            <div th:if="${text != null}">-->
+<!--                                <span th:text="${text}">...</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>

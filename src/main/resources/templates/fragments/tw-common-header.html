@@ -1,0 +1,60 @@
+<header th:fragment="tw-common-header" class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-left">
+    <nav class="bg-blue-200 border-gray-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/index" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-[60px] w-[60px] fill-current"
+                     viewBox="0 0 512 512">
+                    <path d="M24 32C10.7 32 0 42.7 0 56L0 456c0 13.3 10.7 24 24 24l16 0c13.3 0 24-10.7 24-24L64 56c0-13.3-10.7-24-24-24L24 32zm88 0c-8.8 0-16 7.2-16 16l0 416c0 8.8 7.2 16 16 16s16-7.2 16-16l0-416c0-8.8-7.2-16-16-16zm72 0c-13.3 0-24 10.7-24 24l0 400c0 13.3 10.7 24 24 24l16 0c13.3 0 24-10.7 24-24l0-400c0-13.3-10.7-24-24-24l-16 0zm96 0c-13.3 0-24 10.7-24 24l0 400c0 13.3 10.7 24 24 24l16 0c13.3 0 24-10.7 24-24l0-400c0-13.3-10.7-24-24-24l-16 0zM448 56l0 400c0 13.3 10.7 24 24 24l16 0c13.3 0 24-10.7 24-24l0-400c0-13.3-10.7-24-24-24l-16 0c-13.3 0-24 10.7-24 24zm-64-8l0 416c0 8.8 7.2 16 16 16s16-7.2 16-16l0-416c0-8.8-7.2-16-16-16s-16 7.2-16 16z"/>
+                </svg>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">QR Code</span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0" >
+                    <li>
+                        <a href="/index"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0"
+                           aria-current="page">&nbsp;&nbsp;Home</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-url"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">URL</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-email"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">EMAIL</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-phone"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">PHONE</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-sms"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">SMS</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-facetime"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">FACETIME</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-event"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">EVENT</a>
+                    </li>
+                    <li>
+                        <a href="/qr-code-vcard"
+                           class="block py-2 px-3 text-gray-900 bg-blue-200 rounded-sm hover:text-pink-800 md:p-0">VCARD</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

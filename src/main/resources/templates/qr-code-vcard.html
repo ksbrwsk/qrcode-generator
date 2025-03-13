@@ -1,13 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/common-head :: common-head}"></head>
-<body>
-<div th:replace="~{fragments/common-header :: common-header}"/>
-<main role="main">
-    <div class="container" style="margin-top: 20px;">
-        <div th:replace="~{fragments/common-messages :: common-messages}"/>
-        <div th:replace="~{fragments/qr-code-vcard :: qr-code-vcard}"/>
+<head th:replace="~{fragments/tw-common-head :: tw-common-head}"></head>
+<body class="bg-blue-200">
+<div th:replace="~{fragments/tw-common-header :: tw-common-header}"></div>
+<section class="m-4 rounded-lg border-2 bg-white p-4">
+    <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
+        <div class="flex flex-col space-y-4 flex-1">
+            <section
+                    class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-[150px] w-[150px]" viewBox="0 0 576 512">
+                    <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm80 256l64 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16L80 384c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+                <div class="flex w-full flex-col">
+                    <p class="mb-1 text-lg font-bold sm:text-2xl sm:text-base">URL</p>
+                    <p class="mb-4 text-sm tracking-wider sm:block">Generate a QR code with an URL.</p>
+                </div>
+            </section>
+            <section
+                    class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
+                <form class="py-6"  id="qrCodeVCard" method="POST" name="qrCodeVCard" th:action="@{/process/vcard}" th:object="${qrCodeVCard}">
+                    <label class="text-sm font-bold uppercase" for="name">NAME *</label>
+                    <input autofocus
+                           class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="name"
+                           name="name"
+                           required
+                           th:field="*{name}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="nameHelp" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="lastname">LASTNAME *</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="lastname"
+                           name="lastname"
+                           required
+                           th:field="*{lastname}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="lastnameHelp" th:errors="*{lastname}" th:if="${#fields.hasErrors('lastname')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="organisation">ORGANISATION</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="organisation"
+                           name="organisation"
+                           th:field="*{organisation}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="organisationHelp" th:errors="*{organisation}" th:if="${#fields.hasErrors('organisation')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="title">TITLE</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="title"
+                           name="title"
+                           th:field="*{title}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="titleHelp" th:errors="*{title}" th:if="${#fields.hasErrors('title')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="email1">EMAIL</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="email1"
+                           name="email1"
+                           th:field="*{email1}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="email1Help" th:errors="*{email1}" th:if="${#fields.hasErrors('email1')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="phone1">PHONE</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="phone1"
+                           name="phone1"
+                           th:field="*{phone1}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="phone1Help" th:errors="*{phone1}" th:if="${#fields.hasErrors('phone1')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="phone1Type">PHONE TYPE</label>
+                    <select class="my-2 w-full rounded-md border border-gray-400"
+                            id="phone1Type"
+                            name="phone1Type"
+                            form="qrCodeVCard"
+                    >
+                        <option selected>WORK</option>
+                        <option>HOME</option>
+                    </select>
+                    <small class="text-red-500" id="phone1TypeHelp" th:errors="*{phone1Type}" th:if="${#fields.hasErrors('phone1Type')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="adress1Street">STREET</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="adress1Street"
+                           name="adress1Street"
+                           th:field="*{adress1Street}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="adress1StreetHelp" th:errors="*{adress1Street}" th:if="${#fields.hasErrors('adress1Street')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="adress1Locality">LOCALITY</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="adress1Locality"
+                           name="adress1Locality"
+                           th:field="*{adress1Locality}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="adress1LocalityHelp" th:errors="*{adress1Locality}" th:if="${#fields.hasErrors('adress1Locality')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="adress1Region">REGION</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="adress1Region"
+                           name="adress1Region"
+                           th:field="*{adress1Region}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="adress1RegionHelp" th:errors="*{adress1Region}" th:if="${#fields.hasErrors('adress1Region')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="adress1PostalCode">POSTAL CODE</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="adress1PostalCode"
+                           name="adress1PostalCode"
+                           th:field="*{adress1PostalCode}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="adress1PostalCodeHelp" th:errors="*{adress1PostalCode}" th:if="${#fields.hasErrors('adress1PostalCode')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="adress1Country">COUNTRY</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeVCard"
+                           id="adress1Country"
+                           name="adress1Country"
+                           th:field="*{adress1Country}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="adress1CountryHelp" th:errors="*{adress1Country}" th:if="${#fields.hasErrors('adress1Country')}"></small>
+
+                    <label class="text-sm font-bold uppercase" for="adress1Type">ADDRESS TYPE</label>
+                    <select class="my-2 w-full rounded-md border border-gray-400"
+                            id="adress1Type"
+                            name="adress1Type"
+                            form="qrCodeVCard"
+                    >
+                        <option selected>WORK</option>
+                        <option>HOME</option>
+                    </select>
+                    <small class="text-red-500" id="adress1TypeHelp" th:errors="*{adress1Type}" th:if="${#fields.hasErrors('adress1Type')}"></small>
+
+                    <input
+                            class="mt-4 hover:bg-blue-200 bg-pink-300 px-8 py-2 text-sm font-bold uppercase rounded-md hover:border-gray-600 focus:border-gray-800 focus:outline-none focus:ring-0 focus:border-pink-600"
+                            type="submit"
+                            id="url"
+                            value="Generate"
+                    />
+                </form>
+            </section>
+
+        </div>
     </div>
-</main>
+
+</section>
+<div th:replace="~{fragments/tw-common-bottom :: tw-common-bottom}"></div>
 </body>
 </html>

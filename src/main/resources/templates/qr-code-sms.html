@@ -1,14 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/common-head :: common-head}"></head>
-<body>
-<div th:replace="~{fragments/common-header :: common-header}"/>
-<main role="main">
-    <div class="container" style="margin-top: 20px;">
-        <div th:replace="~{fragments/common-messages :: common-messages}"/>
-        <div th:replace="~{fragments/qr-code-sms :: qr-code-sms}"/>
-    </div>
-</main>
+<head th:replace="~{fragments/tw-common-head :: tw-common-head}"></head>
+<body class="bg-blue-200">
+<div th:replace="~{fragments/tw-common-header :: tw-common-header}"></div>
+<section class="m-4 rounded-lg border-2 bg-white p-4">
+    <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
+        <div class="flex flex-col space-y-4 flex-1">
+            <section
+                    class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-[150px] w-[150px]" viewBox="0 0 512 512">
+                    <path d="M256 448c141.4 0 256-93.1 256-208S397.4 32 256 32S0 125.1 0 240c0 45.1 17.7 86.8 47.7 120.9c-1.9 24.5-11.4 46.3-21.4 62.9c-5.5 9.2-11.1 16.6-15.2 21.6c-2.1 2.5-3.7 4.4-4.9 5.7c-.6 .6-1 1.1-1.3 1.4l-.3 .3c0 0 0 0 0 0c0 0 0 0 0 0s0 0 0 0s0 0 0 0c-4.6 4.6-5.9 11.4-3.4 17.4c2.5 6 8.3 9.9 14.8 9.9c28.7 0 57.6-8.9 81.6-19.3c22.9-10 42.4-21.9 54.3-30.6c31.8 11.5 67 17.9 104.1 17.9zM96 212.8c0-20.3 16.5-36.8 36.8-36.8l19.2 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-19.2 0c-2.7 0-4.8 2.2-4.8 4.8c0 1.6 .8 3.1 2.2 4l29.4 19.6c10.3 6.8 16.4 18.3 16.4 30.7c0 20.3-16.5 36.8-36.8 36.8L112 304c-8.8 0-16-7.2-16-16s7.2-16 16-16l27.2 0c2.7 0 4.8-2.2 4.8-4.8c0-1.6-.8-3.1-2.2-4l-29.4-19.6C102.2 236.7 96 225.2 96 212.8zM372.8 176l19.2 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-19.2 0c-2.7 0-4.8 2.2-4.8 4.8c0 1.6 .8 3.1 2.2 4l29.4 19.6c10.2 6.8 16.4 18.3 16.4 30.7c0 20.3-16.5 36.8-36.8 36.8L352 304c-8.8 0-16-7.2-16-16s7.2-16 16-16l27.2 0c2.7 0 4.8-2.2 4.8-4.8c0-1.6-.8-3.1-2.2-4l-29.4-19.6c-10.2-6.8-16.4-18.3-16.4-30.7c0-20.3 16.5-36.8 36.8-36.8zm-152 6.4L256 229.3l35.2-46.9c4.1-5.5 11.3-7.8 17.9-5.6s10.9 8.3 10.9 15.2l0 96c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48-19.2 25.6c-3 4-7.8 6.4-12.8 6.4s-9.8-2.4-12.8-6.4L224 240l0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-96c0-6.9 4.4-13 10.9-15.2s13.7 .1 17.9 5.6z"/>
+                </svg>
+                <div class="flex w-full flex-col">
+                    <p class="mb-1 text-lg font-bold sm:text-2xl sm:text-base">SMS</p>
+                    <p class="mb-4 text-sm tracking-wider sm:block">Generate a QR code with a sms.</p>
+                </div>
+            </section>
+            <section
+                    class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
+                <form class="py-6"  id="qrCodeSms" method="POST" name="qrCodeSms" th:action="@{/process/sms}" th:object="${qrCodeSms}">
+                    <label class="text-sm font-bold uppercase" for="phoneToBeEncoded">PHONE NUMBER *</label>
+                    <input autofocus
+                           class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeSms"
+                           id="phoneToBeEncoded"
+                           name="phoneToBeEncoded"
+                           required
+                           th:field="*{phoneToBeEncoded}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="phoneToBeEncodedHelp" th:errors="*{phoneToBeEncoded}" th:if="${#fields.hasErrors('phoneToBeEncoded')}"></small>
 
+                    <label class="text-sm font-bold uppercase" for="messageToBeEncoded">MESSAGE</label>
+                    <input class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeSms"
+                           id="messageToBeEncoded"
+                           name="messageToBeEncoded"
+                           th:field="*{messageToBeEncoded}"
+                           placeholder=""
+                    />
+                    <small class="text-red-500" id="messageToBeEncodedHelp" th:errors="*{messageToBeEncoded}" th:if="${#fields.hasErrors('messageToBeEncoded')}"></small>
+
+                    <input
+                            class="mt-4 hover:bg-blue-200 bg-pink-300 px-8 py-2 text-sm font-bold uppercase rounded-md hover:border-gray-600 focus:border-gray-800 focus:outline-none focus:ring-0 focus:border-pink-600"
+                            type="submit"
+                            id="url"
+                            value="Generate"
+                    />
+                </form>
+            </section>
+
+        </div>
+    </div>
+
+</section>
+<div th:replace="~{fragments/tw-common-bottom :: tw-common-bottom}"></div>
 </body>
 </html>

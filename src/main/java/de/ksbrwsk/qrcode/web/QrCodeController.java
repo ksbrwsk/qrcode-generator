@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class QrCodeController {
 
     private final static String PAGE_INDEX = "index";
+
     private final static String PAGE_RESULT = "result";
+
     private final static String PAGE_QR_CODE_URL = "qr-code-url";
     private final static String PAGE_QR_CODE_PHONE = "qr-code-phone";
     private final static String PAGE_QR_CODE_FACETIME = "qr-code-facetime";
@@ -52,6 +54,7 @@ public class QrCodeController {
         model.addAttribute("qrCodeUrl", new QrCodeUrl());
         return PAGE_QR_CODE_URL;
     }
+
 
     @PostMapping("/process/url")
     public String processUrl(Model model,

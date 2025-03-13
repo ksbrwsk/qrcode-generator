@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 @Validated
 public class QrCodeEvent {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime eventStart = LocalDateTime.now();
+    private LocalDateTime eventStart = LocalDateTime.now().withMinute(0);
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime eventEnd = LocalDateTime.now();
+    private LocalDateTime eventEnd = LocalDateTime.now().plusHours(1).withMinute(0);
 
     @NotEmpty
     private String summary = "";

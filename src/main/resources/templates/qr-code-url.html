@@ -1,14 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/common-head :: common-head}"></head>
-<body>
-<div th:replace="~{fragments/common-header :: common-header}"/>
-<main role="main">
-    <div class="container" style="margin-top: 20px;">
-        <div th:replace="~{fragments/common-messages :: common-messages}"/>
-        <div th:replace="~{fragments/qr-code-url :: qr-code-url}"/>
-    </div>
-</main>
+<head th:replace="~{fragments/tw-common-head :: tw-common-head}"></head>
+<body class="bg-blue-200">
+<div th:replace="~{fragments/tw-common-header :: tw-common-header}"></div>
+<section class="m-4 rounded-lg border-2 bg-white p-4">
+    <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
+        <div class="flex flex-col space-y-4 flex-1">
+            <section
+                    class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-[100px] w-[100px] fill-current" viewBox="0 0 384 512">
+                    <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/>
+                </svg>
+                <div class="flex w-full flex-col">
+                    <p class="mb-1 text-lg font-bold sm:text-2xl sm:text-base">URL</p>
+                    <p class="mb-4 text-sm tracking-wider sm:block">Generate a QR code with an URL.</p>
+                </div>
+            </section>
+            <section
+                    class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
+            <form class="py-6"  id="qrCodeUrl" method="POST" name="qrCodeUrl" th:action="@{/process/url}" th:object="${qrCodeUrl}">
+                    <label class="text-sm font-bold uppercase" for="urlToBeEncoded">URL *</label>
+                    <input autofocus="autofocus"
+                            class="my-2 w-full rounded-md border border-gray-400"
+                           form="qrCodeUrl"
+                           id="urlToBeEncoded"
+                           name="urlToBeEncoded"
+                           required
+                           th:field="*{urlToBeEncoded}"
+                            placeholder=""
+                    />
+                    <small class="text-red-500" id="urlToBeEncodedHelp" th:errors="*{urlToBeEncoded}" th:if="${#fields.hasErrors('urlToBeEncoded')}"></small>
+                    <input
+                            class="mt-4 hover:bg-blue-200 bg-pink-300 px-8 py-2 text-sm font-bold uppercase rounded-md hover:border-gray-600 focus:border-gray-800 focus:outline-none focus:ring-0 focus:border-pink-600"
+                            type="submit"
+                            id="url"
+                            value="Generate"
+                    />
+                </form>
+            </section>
 
+        </div>
+    </div>
+
+</section>
+<div th:replace="~{fragments/tw-common-bottom :: tw-common-bottom}"></div>
 </body>
 </html>
