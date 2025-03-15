@@ -9,9 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -62,10 +65,12 @@ public class QrCodeController {
                              BindingResult bindingResult) {
         addCommonModelAttributes(model);
         if (!bindingResult.hasErrors()) {
-            log.info("generate QR Code for Url {}", qrCodeUrl.getUrlToBeEncoded());
+            log.info("generate QR Code for Url {}", qrCodeUrl.getUrl());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeUrl(qrCodeUrl);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        } else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_URL;
     }
@@ -90,10 +95,12 @@ public class QrCodeController {
                                BindingResult bindingResult) {
         addCommonModelAttributes(model);
         if (!bindingResult.hasErrors()) {
-            log.info("generate QR Code for Phone number {}", qrCodePhone.getPhoneToBeEncoded());
+            log.info("generate QR Code for Phone number {}", qrCodePhone.getPhone());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodePhone(qrCodePhone);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        }else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_PHONE;
     }
@@ -104,10 +111,12 @@ public class QrCodeController {
                                   BindingResult bindingResult) {
         addCommonModelAttributes(model);
         if (!bindingResult.hasErrors()) {
-            log.info("generate QR Code for Facetime number {}", qrCodeFacetime.getFacetimeToBeEncoded());
+            log.info("generate QR Code for Facetime number {}", qrCodeFacetime.getFacetime());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeFacetime(qrCodeFacetime);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        }else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_FACETIME;
     }
@@ -125,10 +134,12 @@ public class QrCodeController {
                                BindingResult bindingResult) {
         addCommonModelAttributes(model);
         if (!bindingResult.hasErrors()) {
-            log.info("generate QR Code for Email {}", qrCodeEmail.getEmailToBeEncoded());
+            log.info("generate QR Code for Email {}", qrCodeEmail.getEmail());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeEmail(qrCodeEmail);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        } else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_EMAIL;
     }
@@ -146,10 +157,12 @@ public class QrCodeController {
                              BindingResult bindingResult) {
         addCommonModelAttributes(model);
         if (!bindingResult.hasErrors()) {
-            log.info("generate QR Code for Email {}", qrCodeSms.getPhoneToBeEncoded());
+            log.info("generate QR Code for Email {}", qrCodeSms.getPhone());
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeSms(qrCodeSms);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        } else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_SMS;
     }
@@ -178,6 +191,8 @@ public class QrCodeController {
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeVCard(qrCodeVCard);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        } else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_VCARD;
     }
@@ -192,6 +207,8 @@ public class QrCodeController {
             QrCodeProcessingResult result = this.qrCodeEncoder.generateQrCodeEvent(qrCodeEvent);
             this.addResultModelAttributes(model, result);
             return PAGE_RESULT;
+        }else {
+            this.addFieldErrors(bindingResult.getFieldErrors(), model);
         }
         return PAGE_QR_CODE_EVENT;
     }
@@ -210,4 +227,12 @@ public class QrCodeController {
             model.addAttribute(ERROR_MESSAGE, result.getErrorMessage());
         }
     }
+
+    private void addFieldErrors(List<FieldError> fieldErrors, Model model) {
+        List<String> errors = fieldErrors.stream()
+                .map(fieldError -> fieldError.getField().toUpperCase() + " - " + fieldError.getDefaultMessage())
+                .toList();
+        model.addAttribute(ERROR_MESSAGE, errors);
+    }
+
 }

@@ -19,8 +19,8 @@ public class QrCodeEmailTest {
     @Test
     public void thatQrCodeMailIsValidSetter() {
         QrCodeEmail qrCodeEmail = new QrCodeEmail();
-        qrCodeEmail.setEmailToBeEncoded("email@email.com");
-        qrCodeEmail.setSubjectToBeEncoded("My Subject");
+        qrCodeEmail.setEmail("email@email.com");
+        qrCodeEmail.setSubject("My Subject");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodeEmail);
         assertFalse(bindingResult.hasErrors());
     }

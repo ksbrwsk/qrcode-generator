@@ -19,7 +19,7 @@ public class QrCodeFacetimeTest {
     @Test
     public void thatQrCodeFacetimeIsValidSetter() {
         QrCodeFacetime qrCodeFacetime = new QrCodeFacetime();
-        qrCodeFacetime.setFacetimeToBeEncoded("+1 555 1234567");
+        qrCodeFacetime.setFacetime("+1 555 1234567");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodeFacetime);
         assertFalse(bindingResult.hasErrors());
     }

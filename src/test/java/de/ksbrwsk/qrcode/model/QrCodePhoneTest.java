@@ -19,7 +19,7 @@ public class QrCodePhoneTest {
     @Test
     public void thatQrCodePhoneIsValidSetter() {
         QrCodePhone qrCodePhone = new QrCodePhone();
-        qrCodePhone.setPhoneToBeEncoded("+1 555 1234567");
+        qrCodePhone.setPhone("+1 555 1234567");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodePhone);
         assertFalse(bindingResult.hasErrors());
     }

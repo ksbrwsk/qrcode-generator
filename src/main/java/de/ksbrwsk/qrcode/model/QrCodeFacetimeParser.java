@@ -10,6 +10,6 @@ public class QrCodeFacetimeParser extends AbstractQrCodeParser {
 
     @Override
     public String parse() {
-        return "facetime://" + this.qrCodeFacetime.getFacetimeToBeEncoded();
+        return "facetime://" + this.qrCodeFacetime.getFacetime();
     }
 }

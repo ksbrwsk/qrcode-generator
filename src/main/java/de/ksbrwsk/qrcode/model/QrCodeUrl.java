@@ -16,12 +16,12 @@ public class QrCodeUrl {
 
     @NotEmpty
     @URL
-    private String urlToBeEncoded;
+    private String url;
 
     public QrCodeUrl() {
     }
 
     public QrCodeUrl(String urlToBeEncoded) {
-        this.urlToBeEncoded = urlToBeEncoded;
+        this.url = urlToBeEncoded;
     }
 }

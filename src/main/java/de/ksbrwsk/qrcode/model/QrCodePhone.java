@@ -1,6 +1,7 @@
 package de.ksbrwsk.qrcode.model;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
@@ -16,12 +17,11 @@ import org.springframework.validation.annotation.Validated;
 public class QrCodePhone {
 
     @NotEmpty
-    private String phoneToBeEncoded;
-
+    private String phone;
     public QrCodePhone() {
     }
 
     public QrCodePhone(String phoneToBeEncoded) {
-        this.phoneToBeEncoded = phoneToBeEncoded;
+        this.phone = phoneToBeEncoded;
     }
 }

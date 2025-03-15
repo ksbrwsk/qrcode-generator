@@ -6,6 +6,11 @@
 <section class="m-4 rounded-lg border-2 bg-white p-4">
     <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
         <div class="flex flex-col space-y-4 flex-1">
+            <div th:replace="~{fragments/common-messages :: common-messages}"></div>
+        </div>
+    </div>
+    <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
+        <div class="flex flex-col space-y-4 flex-1">
             <section
                     class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-[150px] w-[150px]" viewBox="0 0 512 512">
@@ -19,17 +24,17 @@
             <section
                     class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
                 <form class="py-6"  id="qrCodePhone" method="POST" name="qrCodePhone" th:action="@{/process/phone}" th:object="${qrCodePhone}">
-                    <label class="text-sm font-bold uppercase" for="phoneToBeEncoded">PHONE NUMBER *</label>
+                    <label class="text-sm font-bold uppercase" for="phone">PHONE NUMBER *</label>
                     <input autofocus
                            class="my-2 w-full rounded-md border border-gray-400"
                            form="qrCodePhone"
-                           id="phoneToBeEncoded"
-                           name="phoneToBeEncoded"
+                           id="phone"
+                           name="phone"
                            required
-                           th:field="*{phoneToBeEncoded}"
+                           th:field="*{phone}"
                            placeholder=""
                     />
-                    <small class="text-red-500" id="urlToBeEncodedHelp" th:errors="*{phoneToBeEncoded}" th:if="${#fields.hasErrors('phoneToBeEncoded')}"></small>
+
                     <input
                             class="mt-4 hover:bg-blue-200 bg-pink-300 px-8 py-2 text-sm font-bold uppercase rounded-md hover:border-gray-600 focus:border-gray-800 focus:outline-none focus:ring-0 focus:border-pink-600"
                             type="submit"

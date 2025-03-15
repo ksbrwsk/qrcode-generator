@@ -4,7 +4,11 @@
 <body class="bg-blue-200">
 <div th:replace="~{fragments/tw-common-header :: tw-common-header}"></div>
 <section class="m-4 rounded-lg border-2 bg-white p-4">
-
+    <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
+        <div class="flex flex-col space-y-4 flex-1">
+            <div th:replace="~{fragments/common-messages :: common-messages}"></div>
+        </div>
+    </div>
     <div class="mt-4 flex flex-col space-x-0 space-y-4 lg:flex-row lg:content-start lg:items-start lg:justify-start lg:space-x-4 lg:space-y-0">
         <div class="flex flex-col space-y-4 flex-1">
             <section
@@ -21,35 +25,30 @@
                     class="flex w-full max-w-[768px] items-center space-x-4 rounded-lg border-2 border-gray-300 bg-white p-4">
                 <form class="py-6" id="qrCodeEmail" method="POST" name="qrCodeEmail" th:action="@{/process/email}"
                       th:object="${qrCodeEmail}">
-                    <label class="text-sm font-bold uppercase" for="emailToBeEncoded">EMAIL *</label>
+                    <label class="text-sm font-bold uppercase" for="email">EMAIL *</label>
                     <input autofocus
                            class="my-2 w-full rounded-md border border-gray-400"
                            form="qrCodeEmail"
-                           id="emailToBeEncoded"
-                           name="emailToBeEncoded"
+                           id="email"
+                           name="email"
                            required
-                           th:field="*{emailToBeEncoded}"
+                           th:field="*{email}"
                            placeholder=""
                     />
-                    <small class="text-red-500 absolute" id="emailToBeEncodedHelp" th:errors="*{emailToBeEncoded}"
-                           th:if="${#fields.hasErrors('emailToBeEncoded')}"></small>
-
-                    <label class="text-sm font-bold uppercase mt-2" for="subjectToBeEncoded">SUBJECT *</label>
+                    
+                    <label class="text-sm font-bold uppercase mt-2" for="subject">SUBJECT *</label>
                     <input class="my-2 w-full rounded-md border border-gray-400"
                            form="qrCodeEmail"
-                           id="subjectToBeEncoded"
-                           name="subjectToBeEncoded"
+                           id="subject"
+                           name="subject"
                            required
-                           th:field="*{subjectToBeEncoded}"
+                           th:field="*{subject}"
                            placeholder=""
                     />
-                    <small class="text-red-500" id="subjectToBeEncodedHelp" th:errors="*{subjectToBeEncoded}"
-                           th:if="${#fields.hasErrors('subjectToBeEncoded')}"></small>
-
                     <input
                             class="mt-4 hover:bg-blue-200 bg-pink-300 px-8 py-2 text-sm font-bold uppercase rounded-md hover:border-gray-600 focus:border-gray-800 focus:outline-none focus:ring-0 focus:border-pink-600"
                             type="submit"
-                            id="email"
+                            id="emailButton"
                             value="Generate"
                     />
                 </form>

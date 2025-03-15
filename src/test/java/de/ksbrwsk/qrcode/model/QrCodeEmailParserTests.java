@@ -10,25 +10,25 @@ public class QrCodeEmailParserTests {
     public void thatParseEmailPasses() {
         String expected = "mailto:email@email.com";
         QrCodeEmail qrCodeEmail = new QrCodeEmail();
-        qrCodeEmail.setEmailToBeEncoded("email@email.com");
-        assertEquals(new QrCodeEmailParser(qrCodeEmail).parse(), expected);
+        qrCodeEmail.setEmail("email@email.com");
+        assertEquals(expected, new QrCodeEmailParser(qrCodeEmail).parse());
     }
 
     @Test
     public void thatParseEmailAndSubjectPasses() {
         String expected = "mailto:email@email.com?subject=Subject";
         QrCodeEmail qrCodeEmail = new QrCodeEmail();
-        qrCodeEmail.setEmailToBeEncoded("email@email.com");
-        qrCodeEmail.setSubjectToBeEncoded("Subject");
-        assertEquals(new QrCodeEmailParser(qrCodeEmail).parse(), expected);
+        qrCodeEmail.setEmail("email@email.com");
+        qrCodeEmail.setSubject("Subject");
+        assertEquals(expected, new QrCodeEmailParser(qrCodeEmail).parse());
     }
 
     @Test
     public void thatParseEmailAndSubjectWithBlanksPasses() {
         String expected = "mailto:email@email.com?subject=My%20Subject";
         QrCodeEmail qrCodeEmail = new QrCodeEmail();
-        qrCodeEmail.setEmailToBeEncoded("email@email.com");
-        qrCodeEmail.setSubjectToBeEncoded("My Subject");
-        assertEquals(new QrCodeEmailParser(qrCodeEmail).parse(), expected);
+        qrCodeEmail.setEmail("email@email.com");
+        qrCodeEmail.setSubject("My Subject");
+        assertEquals(expected, new QrCodeEmailParser(qrCodeEmail).parse());
     }
 }

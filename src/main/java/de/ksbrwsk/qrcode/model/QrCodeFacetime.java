@@ -16,12 +16,12 @@ import org.springframework.validation.annotation.Validated;
 public class QrCodeFacetime {
 
     @NotEmpty
-    private String facetimeToBeEncoded;
+    private String facetime;
 
     public QrCodeFacetime() {
     }
 
-    public QrCodeFacetime(String facetimeToBeEncoded) {
-        this.facetimeToBeEncoded = facetimeToBeEncoded;
+    public QrCodeFacetime(String facetime) {
+        this.facetime = facetime;
     }
 }

@@ -20,20 +20,20 @@ public class QrCodeEmail {
 
     @NotEmpty
     @Email
-    private String emailToBeEncoded = "";
+    private String email = "";
 
-    private String subjectToBeEncoded = "";
+    private String subject = "";
 
     public QrCodeEmail() {
     }
 
     public QrCodeEmail(@NotEmpty String emailToBeEncoded) {
-        this.emailToBeEncoded = emailToBeEncoded;
+        this.email = emailToBeEncoded;
     }
 
     public QrCodeEmail(String emailToBeEncoded, String subjectToBeEncoded) {
-        this.emailToBeEncoded = emailToBeEncoded;
-        this.subjectToBeEncoded = subjectToBeEncoded;
+        this.email = emailToBeEncoded;
+        this.subject = subjectToBeEncoded;
     }
 
 }

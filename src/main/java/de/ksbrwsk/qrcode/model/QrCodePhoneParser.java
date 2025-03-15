@@ -10,6 +10,6 @@ public class QrCodePhoneParser extends AbstractQrCodeParser {
 
     @Override
     public String parse() {
-        return "tel:" + this.qrCodePhone.getPhoneToBeEncoded();
+        return "tel:" + this.qrCodePhone.getPhone();
     }
 }

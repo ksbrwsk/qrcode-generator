@@ -19,7 +19,7 @@ public class QrCodeUrlTest {
     @Test
     public void thatQrCodeUrlIsValidSetter() {
         QrCodeUrl qrCodeUrl = new QrCodeUrl();
-        qrCodeUrl.setUrlToBeEncoded("http://www.google.de");
+        qrCodeUrl.setUrl("http://www.google.de");
         BindingResult bindingResult = TestUtils.createBindingResult(qrCodeUrl);
         assertFalse(bindingResult.hasErrors());
     }

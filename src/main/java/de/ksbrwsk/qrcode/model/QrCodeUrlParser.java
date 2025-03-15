@@ -12,6 +12,6 @@ public class QrCodeUrlParser extends AbstractQrCodeParser {
 
     @Override
     public String parse() {
-        return StringUtils.replace(this.qrCodeUrl.getUrlToBeEncoded(), " ", "%20");
+        return StringUtils.replace(this.qrCodeUrl.getUrl(), " ", "%20");
     }
 }

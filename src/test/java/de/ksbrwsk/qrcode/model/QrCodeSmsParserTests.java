@@ -10,7 +10,7 @@ public class QrCodeSmsParserTests {
     public void thatParseSmsPasses() {
         String expected = "sms:+49123456789";
         QrCodeSms qrCodeSms = new QrCodeSms();
-        qrCodeSms.setPhoneToBeEncoded("+49123456789");
+        qrCodeSms.setPhone("+49123456789");
         assertEquals(new QrCodeSmsParser(qrCodeSms).parse(), expected);
     }
 
@@ -18,7 +18,7 @@ public class QrCodeSmsParserTests {
     public void thatParseSmsAndMessagePasses() {
         String expected = "sms:+49123456789?sms_body=My%20Test";
         QrCodeSms qrCodeSms = new QrCodeSms();
-        qrCodeSms.setPhoneToBeEncoded("+49123456789");
+        qrCodeSms.setPhone("+49123456789");
         qrCodeSms.setMessageToBeEncoded("My Test");
         assertEquals(new QrCodeSmsParser(qrCodeSms).parse(), expected);
     }
