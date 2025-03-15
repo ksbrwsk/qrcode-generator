@@ -1,5 +1,6 @@
 package de.ksbrwsk.qrcode.model;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import org.springframework.validation.annotation.Validated;
 public class QrCodeEmail {
 
     @NotEmpty
+    @Email
     private String emailToBeEncoded = "";
 
     private String subjectToBeEncoded = "";

@@ -29,7 +29,7 @@
                            th:field="*{urlToBeEncoded}"
                             placeholder=""
                     />
-                    <small class="text-red-500" id="urlToBeEncodedHelp" th:errors="*{urlToBeEncoded}" th:if="${#fields.hasErrors('urlToBeEncoded')}"></small>
+                    <small class="text-red-500 absolute" id="urlToBeEncodedHelp" th:errors="*{urlToBeEncoded}" th:if="${#fields.hasErrors('urlToBeEncoded')}"></small>
                     <input
                             class="mt-4 hover:bg-blue-200 bg-pink-300 px-8 py-2 text-sm font-bold uppercase rounded-md hover:border-gray-600 focus:border-gray-800 focus:outline-none focus:ring-0 focus:border-pink-600"
                             type="submit"

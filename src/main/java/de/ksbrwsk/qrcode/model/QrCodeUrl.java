@@ -3,6 +3,7 @@ package de.ksbrwsk.qrcode.model;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 public class QrCodeUrl {
 
     @NotEmpty
+    @URL
     private String urlToBeEncoded;
 
     public QrCodeUrl() {
