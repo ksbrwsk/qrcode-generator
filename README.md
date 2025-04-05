@@ -30,7 +30,7 @@ mvn clean install
 to build the application and
 
 ```bash
-java -jar target/qrcode-generator-1.6.0-SNAPSHOT.jar
+java -jar target/qrcode-generator-2.0.0-SNAPSHOT.jar
 ```
 
 or 
@@ -47,7 +47,16 @@ Point your browser to
 http://localhost:8080
 ```
 
+
+```bash
 docker build -t qrcode-generator .
+```
+
+```bash
 docker run -d --name qrcode-generator -p 9080:8080 qrcode-generator
+```
+
+
+
 
 
