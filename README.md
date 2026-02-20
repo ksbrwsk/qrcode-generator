@@ -1,4 +1,4 @@
-# A simple Spring Boot application generating QR Codes.
+## A simple Spring Boot application generating QR Codes.
 
 Features
 --------
