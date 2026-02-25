@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## v2.0.2 - 2026-02-25
+
+### What's Changed
+
+* Add Javadoc documentation to all source classes
+* Fixed README.md
+
 ## v1.6.0 - 2024-11-16
 
 ### What's Changed
