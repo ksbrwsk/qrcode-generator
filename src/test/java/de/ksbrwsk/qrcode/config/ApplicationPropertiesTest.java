@@ -8,6 +8,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Integration tests for {@link ApplicationProperties}.
+ * <p>
+ * Verifies that the {@code application.title} and {@code application.appInfo}
+ * properties are loaded and non-empty.
+ */
 @SpringBootTest
 public class ApplicationPropertiesTest {
 

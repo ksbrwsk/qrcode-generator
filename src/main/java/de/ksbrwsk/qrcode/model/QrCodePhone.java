@@ -7,9 +7,9 @@ import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Form:
+ * Model for a phone-number QR code.
  * <p>
- * tel:+12125551212
+ * Encoded payload format: {@code tel:+12125551212}
  */
 @Getter
 @Setter
@@ -18,9 +18,15 @@ public class QrCodePhone {
 
     @NotEmpty
     private String phone;
+
     public QrCodePhone() {
     }
 
+    /**
+     * Creates a new instance with the given phone number.
+     *
+     * @param phoneToBeEncoded the phone number to encode
+     */
     public QrCodePhone(String phoneToBeEncoded) {
         this.phone = phoneToBeEncoded;
     }

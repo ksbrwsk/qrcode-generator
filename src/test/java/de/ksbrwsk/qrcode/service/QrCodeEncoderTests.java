@@ -9,6 +9,11 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Integration tests for {@link QrCodeEncoder}.
+ * <p>
+ * Verifies that QR codes are generated successfully for all supported data types.
+ */
 @SpringBootTest
 public class QrCodeEncoderTests {
 

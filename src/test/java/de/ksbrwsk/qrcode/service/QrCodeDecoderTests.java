@@ -10,6 +10,12 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * Integration tests for {@link QrCodeDecoder}.
+ * <p>
+ * Decodes pre-generated QR code PNG files from the test classpath and asserts
+ * the expected payload strings.
+ */
 @SpringBootTest
 public class QrCodeDecoderTests {
 

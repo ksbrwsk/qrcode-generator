@@ -16,10 +16,22 @@ import java.io.File;
 import java.util.EnumMap;
 import java.util.Map;
 
+/**
+ * Spring component that decodes QR code image files back to their text payload.
+ * <p>
+ * Uses ZXing's {@link com.google.zxing.qrcode.QRCodeReader} with UTF-8 character set hints.
+ */
 @Component
 @Slf4j
 public class QrCodeDecoder {
 
+    /**
+     * Decodes a QR code from the given image file and returns the encoded text.
+     *
+     * @param qrCodeFile the PNG (or other image) file containing the QR code
+     * @return the decoded text payload
+     * @throws Exception if the file cannot be read or the QR code cannot be decoded
+     */
     public String decodeQrCodeFile(File qrCodeFile) throws Exception {
         log.info("start decoding file {}", qrCodeFile.getName());
         BufferedImage bufferedImage = ImageIO.read(qrCodeFile);

@@ -22,45 +22,104 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Spring component that encodes various data types into QR code images.
+ * <p>
+ * Each {@code generateQrCode*()} method delegates payload formatting to the
+ * corresponding {@code *Parser} and then renders a 250×250 px PNG image,
+ * returning it as a Base64-encoded {@code data:image/png;base64,...} string
+ * wrapped in a {@link QrCodeProcessingResult}.
+ * <p>
+ * ZXing encoding settings: UTF-8 character set, error correction level L, margin 1.
+ */
 @Component
 @Slf4j
 public class QrCodeEncoder {
 
+    /**
+     * Generates a QR code for a URL.
+     *
+     * @param qrCodeUrl the URL model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodeUrl(QrCodeUrl qrCodeUrl) {
         String extracted = new QrCodeUrlParser(qrCodeUrl).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Generates a QR code for an email address.
+     *
+     * @param qrCodeEmail the email model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodeEmail(QrCodeEmail qrCodeEmail) {
         String extracted = new QrCodeEmailParser(qrCodeEmail).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Generates a QR code for an SMS message.
+     *
+     * @param qrCodeSms the SMS model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodeSms(QrCodeSms qrCodeSms) {
         String extracted = new QrCodeSmsParser(qrCodeSms).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Generates a QR code for a phone number.
+     *
+     * @param qrCodePhone the phone model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodePhone(QrCodePhone qrCodePhone) {
         String extracted = new QrCodePhoneParser(qrCodePhone).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Generates a QR code for a calendar event.
+     *
+     * @param qrCodeEvent the event model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodeEvent(QrCodeEvent qrCodeEvent) {
         String extracted = new QrCodeEventParser(qrCodeEvent).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Generates a QR code for a FaceTime address or phone number.
+     *
+     * @param qrCodeFacetime the FaceTime model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodeFacetime(QrCodeFacetime qrCodeFacetime) {
         String extracted = new QrCodeFacetimeParser(qrCodeFacetime).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Generates a QR code for a vCard contact.
+     *
+     * @param qrCodeVCard the vCard model
+     * @return the processing result containing the Base64-encoded image
+     */
     public QrCodeProcessingResult generateQrCodeVCard(QrCodeVCard qrCodeVCard) {
         String extracted = new QrCodeVCardParser(qrCodeVCard).parse();
         return this.generateImageAsBase64(extracted);
     }
 
+    /**
+     * Encodes the given text as a QR code PNG image and returns it Base64-encoded.
+     *
+     * @param textToBeEncoded the payload string to encode
+     * @return the processing result with the {@code data:image/png;base64,...} image string,
+     *         or an error message if encoding fails
+     */
     private QrCodeProcessingResult generateImageAsBase64(String textToBeEncoded) {
         QrCodeProcessingResult result = new QrCodeProcessingResult();
         result.setEncodedText(textToBeEncoded);
@@ -103,6 +162,11 @@ public class QrCodeEncoder {
         return result;
     }
 
+    /**
+     * Builds the ZXing hint map with UTF-8 character set, margin 1, and error correction level L.
+     *
+     * @return the hint map for the ZXing QR code writer
+     */
     @NotNull
     private Map<EncodeHintType, Object> createHintMap() {
         Map<EncodeHintType, Object> hintMap = new EnumMap<>(EncodeHintType.class);

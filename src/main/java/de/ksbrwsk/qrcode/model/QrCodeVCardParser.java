@@ -3,29 +3,28 @@ package de.ksbrwsk.qrcode.model;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * BEGIN:VCARD
- * VERSION:4.0
- * N:Gump;Forrest;;Mr.;
- * FN:Forrest Gump
- * ORG:Bubba Gump Shrimp Co.
- * TITLE:Shrimp Man
- * TEL;TYPE=work,voice;VALUE=uri:tel:+1-111-555-1212
- * TEL;TYPE=home,voice;VALUE=uri:tel:+1-404-555-1212
- * ADR;TYPE=WORK;PREF=1;LABEL="100 Waters Edge\nBaytown\, LA 30314\nUnited States of America":;;100 Waters Edge;Baytown;LA;30314;United States of America
- * ADR;TYPE=HOME;LABEL="42 Plantation St.\nBaytown\, LA 30314\nUnited States of America":;;42 Plantation St.;Baytown;LA;30314;United States of America
- * EMAIL:forrestgump@example.com
- * REV:20080424T195243Z
- * x-qq:21588891
- * END:VCARD
+ * Parser that formats a {@link QrCodeVCard} into a vCard 4.0 payload string for ZXing.
+ * <p>
+ * Only non-empty optional fields are included in the output.
  */
 public class QrCodeVCardParser extends AbstractQrCodeParser {
 
     private final QrCodeVCard qrCodeVCard;
 
+    /**
+     * Creates a new parser for the given vCard model.
+     *
+     * @param qrCodeVCard the vCard model to parse
+     */
     public QrCodeVCardParser(QrCodeVCard qrCodeVCard) {
         this.qrCodeVCard = qrCodeVCard;
     }
 
+    /**
+     * Formats the vCard data into a vCard 4.0 payload string.
+     *
+     * @return the formatted vCard payload string
+     */
     @Override
     public String parse() {
         StringBuilder builder = new StringBuilder("BEGIN:VCARD\n")

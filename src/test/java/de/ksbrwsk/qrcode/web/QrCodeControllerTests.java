@@ -13,6 +13,11 @@ import org.springframework.validation.support.BindingAwareModelMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Integration tests for {@link QrCodeController}.
+ * <p>
+ * Tests invoke controller methods directly with real bean validation via {@link TestUtils}.
+ */
 @SpringBootTest
 public class QrCodeControllerTests {
 

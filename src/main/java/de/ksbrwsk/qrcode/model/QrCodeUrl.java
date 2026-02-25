@@ -7,7 +7,10 @@ import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Format: http://google.de
+ * Model for a URL QR code.
+ * <p>
+ * The URL is validated as non-empty and must be a well-formed HTTP/HTTPS URL.
+ * Encoded payload format: {@code http://example.com}
  */
 @Getter
 @Setter
@@ -21,6 +24,11 @@ public class QrCodeUrl {
     public QrCodeUrl() {
     }
 
+    /**
+     * Creates a new instance with the given URL.
+     *
+     * @param urlToBeEncoded the URL to encode
+     */
     public QrCodeUrl(String urlToBeEncoded) {
         this.url = urlToBeEncoded;
     }

@@ -6,9 +6,9 @@ import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Form:
+ * Model for a FaceTime QR code.
  * <p>
- * facetime://+12125551212
+ * Encoded payload format: {@code facetime://+12125551212}
  */
 @Getter
 @Setter
@@ -21,6 +21,11 @@ public class QrCodeFacetime {
     public QrCodeFacetime() {
     }
 
+    /**
+     * Creates a new instance with the given FaceTime address or phone number.
+     *
+     * @param facetime the FaceTime address or phone number to encode
+     */
     public QrCodeFacetime(String facetime) {
         this.facetime = facetime;
     }

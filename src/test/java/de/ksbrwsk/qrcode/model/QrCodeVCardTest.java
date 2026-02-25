@@ -7,6 +7,9 @@ import org.springframework.validation.BindingResult;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Unit tests for {@link QrCodeVCard} bean validation.
+ */
 public class QrCodeVCardTest {
 
     @Test

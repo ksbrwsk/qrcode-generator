@@ -16,6 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+/**
+ * Spring MVC controller that handles all QR code generation requests.
+ * <p>
+ * Provides GET handlers to display input forms and POST handlers to process the submitted
+ * models, delegating encoding to {@link QrCodeEncoder}. On validation errors the form is
+ * re-rendered with field error messages; on success the {@code result} view is returned.
+ */
 @Controller
 @Slf4j
 public class QrCodeController {
@@ -40,17 +47,35 @@ public class QrCodeController {
     private final ApplicationProperties applicationProperties;
     private final QrCodeEncoder qrCodeEncoder;
 
+    /**
+     * Creates a new {@code QrCodeController}.
+     *
+     * @param applicationProperties application-level configuration properties
+     * @param qrCodeEncoder         service used to encode data into QR code images
+     */
     public QrCodeController(ApplicationProperties applicationProperties, QrCodeEncoder qrCodeEncoder) {
         this.applicationProperties = applicationProperties;
         this.qrCodeEncoder = qrCodeEncoder;
     }
 
+    /**
+     * Displays the application index / landing page.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code index}
+     */
     @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
         addCommonModelAttributes(model);
         return PAGE_INDEX;
     }
 
+    /**
+     * Displays the URL QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-url}
+     */
     @GetMapping("/qr-code-url")
     public String qrCodeUrl(Model model) {
         addCommonModelAttributes(model);
@@ -59,6 +84,14 @@ public class QrCodeController {
     }
 
 
+    /**
+     * Processes the URL QR code form submission.
+     *
+     * @param model         the Spring MVC model
+     * @param qrCodeUrl     the submitted URL model, validated via {@code @Valid}
+     * @param bindingResult validation result
+     * @return {@code result} view on success, or {@code qr-code-url} on validation errors
+     */
     @PostMapping("/process/url")
     public String processUrl(Model model,
                              @Valid @ModelAttribute("qrCodeUrl") QrCodeUrl qrCodeUrl,
@@ -75,6 +108,12 @@ public class QrCodeController {
         return PAGE_QR_CODE_URL;
     }
 
+    /**
+     * Displays the phone number QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-phone}
+     */
     @GetMapping("/qr-code-phone")
     public String qrCodePhone(Model model) {
         addCommonModelAttributes(model);
@@ -82,6 +121,12 @@ public class QrCodeController {
         return PAGE_QR_CODE_PHONE;
     }
 
+    /**
+     * Displays the FaceTime QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-facetime}
+     */
     @GetMapping("/qr-code-facetime")
     public String qrCodeFacetime(Model model) {
         addCommonModelAttributes(model);
@@ -89,6 +134,14 @@ public class QrCodeController {
         return PAGE_QR_CODE_FACETIME;
     }
 
+    /**
+     * Processes the phone number QR code form submission.
+     *
+     * @param model         the Spring MVC model
+     * @param qrCodePhone   the submitted phone model, validated via {@code @Valid}
+     * @param bindingResult validation result
+     * @return {@code result} view on success, or {@code qr-code-phone} on validation errors
+     */
     @PostMapping("/process/phone")
     public String processPhone(Model model,
                                @Valid @ModelAttribute("qrCodePhone") QrCodePhone qrCodePhone,
@@ -105,6 +158,14 @@ public class QrCodeController {
         return PAGE_QR_CODE_PHONE;
     }
 
+    /**
+     * Processes the FaceTime QR code form submission.
+     *
+     * @param model           the Spring MVC model
+     * @param qrCodeFacetime  the submitted FaceTime model, validated via {@code @Valid}
+     * @param bindingResult   validation result
+     * @return {@code result} view on success, or {@code qr-code-facetime} on validation errors
+     */
     @PostMapping("/process/facetime")
     public String processFacetime(Model model,
                                   @Valid @ModelAttribute("qrCodeFacetime") QrCodeFacetime qrCodeFacetime,
@@ -121,6 +182,12 @@ public class QrCodeController {
         return PAGE_QR_CODE_FACETIME;
     }
 
+    /**
+     * Displays the email QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-email}
+     */
     @GetMapping("/qr-code-email")
     public String qrCodeEmail(Model model) {
         addCommonModelAttributes(model);
@@ -128,6 +195,14 @@ public class QrCodeController {
         return PAGE_QR_CODE_EMAIL;
     }
 
+    /**
+     * Processes the email QR code form submission.
+     *
+     * @param model         the Spring MVC model
+     * @param qrCodeEmail   the submitted email model, validated via {@code @Valid}
+     * @param bindingResult validation result
+     * @return {@code result} view on success, or {@code qr-code-email} on validation errors
+     */
     @PostMapping("/process/email")
     public String processEmail(Model model,
                                @Valid @ModelAttribute("qrCodeEmail") QrCodeEmail qrCodeEmail,
@@ -144,6 +219,12 @@ public class QrCodeController {
         return PAGE_QR_CODE_EMAIL;
     }
 
+    /**
+     * Displays the SMS QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-sms}
+     */
     @GetMapping("/qr-code-sms")
     public String qrCodeSms(Model model) {
         addCommonModelAttributes(model);
@@ -151,6 +232,14 @@ public class QrCodeController {
         return PAGE_QR_CODE_SMS;
     }
 
+    /**
+     * Processes the SMS QR code form submission.
+     *
+     * @param model         the Spring MVC model
+     * @param qrCodeSms     the submitted SMS model, validated via {@code @Valid}
+     * @param bindingResult validation result
+     * @return {@code result} view on success, or {@code qr-code-sms} on validation errors
+     */
     @PostMapping("/process/sms")
     public String processSms(Model model,
                              @Valid @ModelAttribute("qrCodeSms") QrCodeSms qrCodeSms,
@@ -167,6 +256,12 @@ public class QrCodeController {
         return PAGE_QR_CODE_SMS;
     }
 
+    /**
+     * Displays the calendar event QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-event}
+     */
     @GetMapping("/qr-code-event")
     public String qrCodeEvent(Model model) {
         addCommonModelAttributes(model);
@@ -174,6 +269,12 @@ public class QrCodeController {
         return PAGE_QR_CODE_EVENT;
     }
 
+    /**
+     * Displays the vCard QR code input form.
+     *
+     * @param model the Spring MVC model
+     * @return the logical view name {@code qr-code-vcard}
+     */
     @GetMapping("/qr-code-vcard")
     public String qrCodeVCard(Model model) {
         addCommonModelAttributes(model);
@@ -181,6 +282,14 @@ public class QrCodeController {
         return PAGE_QR_CODE_VCARD;
     }
 
+    /**
+     * Processes the vCard QR code form submission.
+     *
+     * @param model         the Spring MVC model
+     * @param qrCodeVCard   the submitted vCard model, validated via {@code @Valid}
+     * @param bindingResult validation result
+     * @return {@code result} view on success, or {@code qr-code-vcard} on validation errors
+     */
     @PostMapping("/process/vcard")
     public String processVCard(Model model,
                                @Valid @ModelAttribute("qrCodeVCard") QrCodeVCard qrCodeVCard,
@@ -197,6 +306,14 @@ public class QrCodeController {
         return PAGE_QR_CODE_VCARD;
     }
 
+    /**
+     * Processes the calendar event QR code form submission.
+     *
+     * @param model         the Spring MVC model
+     * @param qrCodeEvent   the submitted event model, validated via {@code @Valid}
+     * @param bindingResult validation result
+     * @return {@code result} view on success, or {@code qr-code-event} on validation errors
+     */
     @PostMapping("/process/event")
     public String processEvent(Model model,
                                @Valid @ModelAttribute("qrCodeEvent") QrCodeEvent qrCodeEvent,
@@ -213,11 +330,22 @@ public class QrCodeController {
         return PAGE_QR_CODE_EVENT;
     }
 
+    /**
+     * Adds common model attributes (title and app info) used by all views.
+     *
+     * @param model the Spring MVC model
+     */
     private void addCommonModelAttributes(@NotNull Model model) {
         model.addAttribute("titleMessage", this.applicationProperties.getTitle());
         model.addAttribute("appInfo", this.applicationProperties.getAppInfo());
     }
 
+    /**
+     * Populates the model with the QR code image, encoded text, and success or error message.
+     *
+     * @param model  the Spring MVC model
+     * @param result the processing result returned by {@link QrCodeEncoder}
+     */
     private void addResultModelAttributes(@NotNull Model model, @NotNull QrCodeProcessingResult result) {
         model.addAttribute(QR_CODE, result.getImage());
         model.addAttribute(TEXT_TO_BE_ENCODED, result.getEncodedText());
@@ -228,6 +356,12 @@ public class QrCodeController {
         }
     }
 
+    /**
+     * Collects field validation errors and adds them as an error message list to the model.
+     *
+     * @param fieldErrors list of field errors from bean validation
+     * @param model       the Spring MVC model
+     */
     private void addFieldErrors(List<FieldError> fieldErrors, Model model) {
         List<String> errors = fieldErrors.stream()
                 .map(fieldError -> fieldError.getField().toUpperCase() + " - " + fieldError.getDefaultMessage())

@@ -7,6 +7,9 @@ import org.springframework.validation.BindingResult;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Unit tests for {@link QrCodeUrl} bean validation.
+ */
 public class QrCodeUrlTest {
 
     @Test
