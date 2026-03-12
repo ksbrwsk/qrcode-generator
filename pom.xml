@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>21</java.version>
-        <zxing.version>3.5.3</zxing.version>
+        <zxing.version>3.5.4</zxing.version>
         <commons-io.version>2.18.0</commons-io.version>
         <jetbrains-annotations.version>23.0.0</jetbrains-annotations.version>
         <project.scm.id>github</project.scm.id>
